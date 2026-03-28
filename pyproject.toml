@@ -5,21 +5,45 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pywebflx"
 version = "0.1.0"
-description = "Browser automation library for already-open Chrome pages, inspired by UiPath"
+description = "Browser automation for already-open Chrome pages via Extension + WebSocket"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.10"
+authors = [
+    {name = "Flexa", email = "the.flexa@outlook.com"},
+]
+keywords = ["browser", "automation", "chrome", "rpa", "websocket", "scraping"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Internet :: WWW/HTTP :: Browsers",
+    "Framework :: AsyncIO",
+]
 dependencies = [
     "websockets>=12.0",
     "loguru>=0.7.0",
     "click>=8.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/theflexa/pywebflx"
+Documentation = "https://theflexa.github.io/pywebflx/"
+Repository = "https://github.com/theflexa/pywebflx"
+Issues = "https://github.com/theflexa/pywebflx/issues"
+
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
     "pytest-asyncio>=0.23",
     "pytest-mock>=3.12",
+    "build",
+    "twine",
 ]
 
 [project.scripts]
@@ -27,6 +51,12 @@ pywebflx = "pywebflx.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+pywebflx = [
+    "extension/**/*",
+    "extension/*",
+]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
