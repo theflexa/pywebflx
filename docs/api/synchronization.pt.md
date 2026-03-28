@@ -1,32 +1,32 @@
-# Synchronization
+# Sincronizacao
 
-Methods for waiting for elements to appear, disappear, or checking existence.
+Metodos para aguardar elementos aparecerem, desaparecerem ou verificar existencia.
 
 ---
 
 ## element_exists
 
-Checks whether an element exists on the page.
+Verifica se um elemento existe na pagina.
 
 ```python
 exists = await browser.element_exists(selector, timeout=0)
 ```
 
-### Parameters
+### Parametros
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `selector` | `str` | -- | CSS selector or XPath |
-| `timeout` | `float` | `0` | If > 0, waits up to N seconds |
+| Parametro | Tipo | Padrao | Descricao |
+|-----------|------|--------|-----------|
+| `selector` | `str` | -- | Seletor CSS ou XPath |
+| `timeout` | `float` | `0` | Se > 0, aguarda ate N segundos |
 
-### Examples
+### Exemplos
 
 ```python
-# Instant check
+# Verificacao instantanea
 if await browser.element_exists("#success-modal"):
-    print("Success!")
+    print("Sucesso!")
 
-# Wait up to 5 seconds
+# Aguardar ate 5 segundos
 if await browser.element_exists("#result", timeout=5):
     text = await browser.get_text("#result")
 ```
@@ -35,76 +35,76 @@ if await browser.element_exists("#result", timeout=5):
 
 ## wait_element
 
-Waits for an element to meet a condition. Raises an error on timeout.
+Aguarda um elemento atender a uma condicao. Lanca erro em caso de timeout.
 
 ```python
 await browser.wait_element(selector, condition="visible", timeout=None)
 ```
 
-### Parameters
+### Parametros
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `selector` | `str` | -- | CSS selector or XPath |
+| Parametro | Tipo | Padrao | Descricao |
+|-----------|------|--------|-----------|
+| `selector` | `str` | -- | Seletor CSS ou XPath |
 | `condition` | `str` | `"visible"` | `"visible"`, `"clickable"`, `"present"` |
-| `timeout` | `float` | config | Timeout in seconds |
+| `timeout` | `float` | config | Timeout em segundos |
 
-### Example
+### Exemplo
 
 ```python
 await browser.wait_element("#loading", condition="visible", timeout=10)
 await browser.click("#loading")
 ```
 
-### Exception
+### Excecao
 
-Raises `ElementTimeoutError` if the condition is not met within the timeout.
+Lanca `ElementTimeoutError` se a condicao nao for atendida dentro do timeout.
 
 ---
 
 ## wait_element_vanish
 
-Waits for an element to disappear from the page.
+Aguarda um elemento desaparecer da pagina.
 
 ```python
 await browser.wait_element_vanish(selector, timeout=None)
 ```
 
-### Example
+### Exemplo
 
 ```python
 await browser.click("#btn-save")
 await browser.wait_element_vanish("#spinner", timeout=15)
-print("Saved successfully!")
+print("Salvo com sucesso!")
 ```
 
-### Exception
+### Excecao
 
-Raises `ElementTimeoutError` if the element still exists after the timeout.
+Lanca `ElementTimeoutError` se o elemento ainda existir apos o timeout.
 
 ---
 
 ## find_element
 
-Finds an element and returns information about it.
+Encontra um elemento e retorna informacoes sobre ele.
 
 ```python
 info = await browser.find_element(selector)
 ```
 
-### Return
+### Retorno
 
 ```python
 {
     "tag": "button",
     "id": "btn-login",
     "classes": ["btn", "btn-primary"],
-    "text": "Sign In",
+    "text": "Entrar",
     "visible": True,
 }
 ```
 
-### Example
+### Exemplo
 
 ```python
 el = await browser.find_element("#btn-submit")

@@ -1,8 +1,8 @@
 # PyWebFlx
 
-**Browser automation para paginas Chrome ja abertas, inspirado na UiPath.**
+**Automação de navegador para páginas Chrome já abertas.**
 
-PyWebFlx conecta a paginas ja abertas no Chrome via uma extensao (Manifest V3) + WebSocket. Diferente do Selenium, nao cria sandbox — voce automatiza o navegador real.
+PyWebFlx conecta a páginas já abertas no Chrome via uma extensão (Manifest V3) + WebSocket. Diferente do Selenium, não cria sandbox — você automatiza o navegador real.
 
 ## Instalacao
 

@@ -1,14 +1,14 @@
-# Example: Web Scraping
+# Exemplo: Web Scraping
 
-Complete scraping of the [quotes.toscrape.com](https://quotes.toscrape.com/) site using PyWebFlx.
+Scraping completo do site [quotes.toscrape.com](https://quotes.toscrape.com/) usando PyWebFlx.
 
-## The workflow
+## O fluxo
 
-1. **`inspect()`** -- understand the page
-2. **`inspect(".quote")`** -- view internal structure
-3. **`extract_data()`** -- extract using the discovered selectors
+1. **`inspect()`** -- entender a pagina
+2. **`inspect(".quote")`** -- ver a estrutura interna
+3. **`extract_data()`** -- extrair usando os seletores descobertos
 
-## Full code
+## Codigo completo
 
 ```python
 import asyncio
@@ -19,20 +19,20 @@ configure_logging(level="INFO")
 async def main():
     async with use_browser(url="https://quotes.toscrape.com/") as browser:
 
-        # 1. General inspect -- discovers .quote x 10
+        # 1. Inspect geral -- descobre .quote x 10
         page = await browser.inspect(depth=5, samples=1)
         print(page)
         # <div.quote> x 10 items
         #   sample[0]: "A reader lives a thousand lives..."
 
-        # 2. Focused inspect -- discovers .text, .author, .tags
+        # 2. Inspect focado -- descobre .text, .author, .tags
         quote = await browser.inspect(".quote", depth=5, samples=1)
         print(quote)
         # <span.text> "A reader lives..."
         # <small.author> "George R.R. Martin"
         # <a.tag> x 4 items
 
-        # 3. Extract using the discovered selectors
+        # 3. Extrair usando os seletores descobertos
         quotes = await browser.extract_data(
             container="body",
             row=".quote",
@@ -48,12 +48,12 @@ async def main():
             print(f"{i}. {q['author']}: {q['text'][:60]}...")
             print(f"   Tags: {', '.join(tags)}")
 
-        print(f"\nTotal: {len(quotes)} quotes")
+        print(f"\nTotal: {len(quotes)} citacoes")
 
 asyncio.run(main())
 ```
 
-## Output
+## Saida
 
 ```
 1. George R.R. Martin: "A reader lives a thousand lives before he dies...
@@ -63,54 +63,54 @@ asyncio.run(main())
 3. Marilyn Monroe: "You believe lies so you eventually learn to trust...
    Tags: lies, lying, trust
 ...
-Total: 10 quotes
+Total: 10 citacoes
 ```
 
-## With pagination
+## Com paginacao
 
 ```python
-async def scrape_all_pages():
+async def scrape_todas_paginas():
     async with use_browser(url="https://quotes.toscrape.com/") as browser:
-        all_quotes = []
-        page = 1
+        todas_citacoes = []
+        pagina = 1
 
         while True:
-            print(f"Page {page}...")
+            print(f"Pagina {pagina}...")
 
             quotes = await browser.extract_data(
                 container="body",
                 row=".quote",
                 columns={"text": ".text", "author": ".author"}
             )
-            all_quotes.extend(quotes)
+            todas_citacoes.extend(quotes)
 
-            # Check if there is a next page
+            # Verificar se ha proxima pagina
             if not await browser.element_exists("li.next a"):
                 break
 
             await browser.click("li.next a")
             await asyncio.sleep(1)
-            page += 1
+            pagina += 1
 
-        print(f"Total: {len(all_quotes)} quotes across {page} pages")
-        return all_quotes
+        print(f"Total: {len(todas_citacoes)} citacoes em {pagina} paginas")
+        return todas_citacoes
 ```
 
-## Export to CSV
+## Exportar para CSV
 
 ```python
 import pandas as pd
 
-quotes = await scrape_all_pages()
+quotes = await scrape_todas_paginas()
 df = pd.DataFrame(quotes)
-df.to_csv("quotes.csv", index=False)
+df.to_csv("citacoes.csv", index=False)
 ```
 
-## Export to JSON
+## Exportar para JSON
 
 ```python
 import json
 
-with open("quotes.json", "w") as f:
+with open("citacoes.json", "w") as f:
     json.dump(quotes, f, indent=2, ensure_ascii=False)
 ```

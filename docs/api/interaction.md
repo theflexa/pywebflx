@@ -1,35 +1,35 @@
-# Interacao
+# Interaction
 
-Metodos para interagir com elementos na pagina: clicar, digitar, selecionar, etc.
+Methods for interacting with elements on the page: click, type, select, etc.
 
 ---
 
 ## click
 
-Clica em um elemento.
+Clicks on an element.
 
 ```python
 await browser.click(selector, **kwargs)
 ```
 
-### Parametros
+### Parameters
 
-| Parametro | Tipo | Default | Descricao |
-|-----------|------|---------|-----------|
-| `selector` | `str` | — | Seletor CSS ou XPath |
-| `text` | `str` | `None` | Buscar por texto visivel |
-| `tag` | `str` | `None` | Filtrar por tag HTML |
-| `role` | `str` | `None` | Buscar por ARIA role |
-| `name` | `str` | `None` | Buscar por ARIA label/name |
-| `click_type` | `str` | `"single"` | `"single"` ou `"double"` |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `selector` | `str` | -- | CSS selector or XPath |
+| `text` | `str` | `None` | Search by visible text |
+| `tag` | `str` | `None` | Filter by HTML tag |
+| `role` | `str` | `None` | Search by ARIA role |
+| `name` | `str` | `None` | Search by ARIA label/name |
+| `click_type` | `str` | `"single"` | `"single"` or `"double"` |
 | `mouse_button` | `str` | `"left"` | `"left"`, `"right"`, `"middle"` |
-| `timeout` | `float` | config | Timeout em segundos |
-| `retry` | `int` | config | Tentativas em caso de falha |
-| `verify` | `str` | `None` | Seletor para verificar apos click |
-| `delay_before` | `float` | `None` | Delay antes do click |
-| `delay_after` | `float` | config | Delay apos o click |
+| `timeout` | `float` | config | Timeout in seconds |
+| `retry` | `int` | config | Retry attempts on failure |
+| `verify` | `str` | `None` | Selector to verify after click |
+| `delay_before` | `float` | `None` | Delay before click |
+| `delay_after` | `float` | config | Delay after click |
 
-### Exemplos
+### Examples
 
 ```python
 # CSS selector
@@ -38,80 +38,80 @@ await browser.click("#btn-login")
 # XPath
 await browser.click("//button[@id='submit']")
 
-# Por texto
-await browser.click(text="Entrar", tag="button")
+# By text
+await browser.click(text="Sign In", tag="button")
 
 # Double click
 await browser.click("#item", click_type="double")
 
-# Click direito
+# Right click
 await browser.click("#menu", mouse_button="right")
 
-# Com retry e verificacao
-await browser.click("#btn", retry=3, verify=".sucesso", timeout=10)
+# With retry and verification
+await browser.click("#btn", retry=3, verify=".success", timeout=10)
 ```
 
 ---
 
 ## type_into
 
-Digita texto em um campo, simulando digitacao.
+Types text into a field, simulating keystrokes.
 
 ```python
-await browser.type_into(selector, text="valor")
+await browser.type_into(selector, text="value")
 ```
 
-### Parametros
+### Parameters
 
-| Parametro | Tipo | Default | Descricao |
-|-----------|------|---------|-----------|
-| `selector` | `str` | — | Seletor do campo |
-| `text` | `str` | `""` | Texto a digitar |
-| `clear_before` | `bool` | `True` | Limpar campo antes |
-| `click_before` | `bool` | `True` | Focar/clicar no campo antes |
-| `delay_between_keys` | `float` | `0` | Delay entre teclas (0 = instantaneo) |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `selector` | `str` | -- | Field selector |
+| `text` | `str` | `""` | Text to type |
+| `clear_before` | `bool` | `True` | Clear field before typing |
+| `click_before` | `bool` | `True` | Focus/click on field before typing |
+| `delay_between_keys` | `float` | `0` | Delay between keys (0 = instant) |
 | `timeout` | `float` | config | Timeout |
-| `retry` | `int` | config | Tentativas |
+| `retry` | `int` | config | Retry attempts |
 
-### Exemplos
+### Examples
 
 ```python
-await browser.type_into("#email", text="usuario@email.com")
-await browser.type_into("#senha", text="123456", delay_between_keys=0.05)
-await browser.type_into("#campo", text="adicionar", clear_before=False)
+await browser.type_into("#email", text="user@email.com")
+await browser.type_into("#password", text="123456", delay_between_keys=0.05)
+await browser.type_into("#field", text="append", clear_before=False)
 ```
 
 ---
 
 ## set_text
 
-Define o valor de um campo diretamente, sem simular digitacao.
+Sets the value of a field directly, without simulating keystrokes.
 
 ```python
-await browser.set_text(selector, text="valor")
+await browser.set_text(selector, text="value")
 ```
 
-### Exemplo
+### Example
 
 ```python
-await browser.set_text("#campo-oculto", text="valor-direto")
+await browser.set_text("#hidden-field", text="direct-value")
 ```
 
 ---
 
 ## check / uncheck
 
-Marca ou desmarca um checkbox.
+Checks or unchecks a checkbox.
 
 ```python
 await browser.check(selector)
 await browser.uncheck(selector)
 ```
 
-### Exemplo
+### Example
 
 ```python
-await browser.check("#aceito-termos")
+await browser.check("#accept-terms")
 await browser.uncheck("#newsletter")
 ```
 
@@ -119,55 +119,55 @@ await browser.uncheck("#newsletter")
 
 ## select_item
 
-Seleciona um item em um dropdown `<select>`.
+Selects an item in a `<select>` dropdown.
 
 ```python
-await browser.select_item(selector, item="valor", by="text")
+await browser.select_item(selector, item="value", by="text")
 ```
 
-### Parametros
+### Parameters
 
-| Parametro | Tipo | Default | Descricao |
-|-----------|------|---------|-----------|
-| `selector` | `str` | — | Seletor do `<select>` |
-| `item` | `str` | `""` | Valor, texto ou indice a selecionar |
-| `by` | `str` | `"text"` | `"text"`, `"value"` ou `"index"` |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `selector` | `str` | -- | `<select>` selector |
+| `item` | `str` | `""` | Value, text, or index to select |
+| `by` | `str` | `"text"` | `"text"`, `"value"`, or `"index"` |
 
-### Exemplo
+### Example
 
 ```python
-await browser.select_item("#estado", "Para", by="text")
-await browser.select_item("#pais", "BR", by="value")
-await browser.select_item("#mes", "0", by="index")
+await browser.select_item("#state", "California", by="text")
+await browser.select_item("#country", "US", by="value")
+await browser.select_item("#month", "0", by="index")
 ```
 
 ---
 
 ## hover
 
-Passa o mouse sobre um elemento.
+Hovers the mouse over an element.
 
 ```python
 await browser.hover(selector)
 ```
 
-### Exemplo
+### Example
 
 ```python
-await browser.hover("#menu-dropdown")
+await browser.hover("#dropdown-menu")
 ```
 
 ---
 
 ## send_hotkey
 
-Envia atalho de teclado.
+Sends a keyboard shortcut.
 
 ```python
 await browser.send_hotkey(keys)
 ```
 
-### Exemplos
+### Examples
 
 ```python
 await browser.send_hotkey("ctrl+a")
@@ -177,12 +177,12 @@ await browser.send_hotkey("ctrl+shift+s")
 
 ---
 
-## Seletores
+## Selectors
 
-Todos os metodos aceitam 3 tipos de seletor:
+All methods accept 3 types of selectors:
 
-| Tipo | Exemplo | Deteccao |
-|------|---------|----------|
-| CSS | `"#btn"`, `".class"`, `"div > span"` | Padrao |
-| XPath | `"//button[@id='ok']"`, `.//div` | Comeca com `//`, `./` ou `(` |
-| Atributos | `text="Entrar", tag="button"` | Keyword args |
+| Type | Example | Detection |
+|------|---------|-----------|
+| CSS | `"#btn"`, `".class"`, `"div > span"` | Default |
+| XPath | `"//button[@id='ok']"`, `.//div` | Starts with `//`, `./`, or `(` |
+| Attributes | `text="Sign In", tag="button"` | Keyword args |

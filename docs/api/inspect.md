@@ -1,66 +1,66 @@
 # inspect
 
-Retorna uma visao resumida da estrutura do DOM, otimizada para consumo por IAs e debug rapido.
+Returns a summarized view of the DOM structure, optimized for AI consumption and quick debugging.
 
-Usa **~95% menos tokens** que o HTML bruto, mantendo a informacao util.
+Uses **~95% fewer tokens** than raw HTML while preserving useful information.
 
-## Assinatura
+## Signature
 
 ```python
-estrutura = await browser.inspect(selector="", depth=2, samples=2)
+structure = await browser.inspect(selector="", depth=2, samples=2)
 ```
 
-## Parametros
+## Parameters
 
-| Parametro | Tipo | Default | Descricao |
-|-----------|------|---------|-----------|
-| `selector` | `str` | `""` | Escopo (vazio = pagina inteira) |
-| `depth` | `int` | `2` | Profundidade maxima de travessia |
-| `samples` | `int` | `2` | Amostras de dados em listas/tabelas |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `selector` | `str` | `""` | Scope (empty = entire page) |
+| `depth` | `int` | `2` | Maximum traversal depth |
+| `samples` | `int` | `2` | Data samples in lists/tables |
 
-## Exemplo de saida
+## Output example
 
 ```
 <body>
   <header#top-nav .navbar>
     <button.btn-menu> "Menu"
-    <input#search type="search" placeholder="Buscar...">
+    <input#search type="search" placeholder="Search...">
     <a.logo> "Portal Sicoob"
   <main#content>
     <form#login-form>
-      <input#usuario type="text" placeholder="Usuario" [required]>
-      <input#senha type="password" placeholder="Senha" [required]>
-      <select#agencia> 3 options: ["0001 - Centro", "0032 - Belem"]
-      <button#btn-login type="submit"> "Entrar"
-    <div.avisos>
-      <table#tabela-avisos> 3 cols x 12 rows
-        headers: ["Data", "Tipo", "Mensagem"]
-        sample[0]: ["28/03", "Info", "Manutencao programada"]
+      <input#username type="text" placeholder="Username" [required]>
+      <input#password type="password" placeholder="Password" [required]>
+      <select#branch> 3 options: ["0001 - Downtown", "0032 - Belem"]
+      <button#btn-login type="submit"> "Sign In"
+    <div.notices>
+      <table#notices-table> 3 cols x 12 rows
+        headers: ["Date", "Type", "Message"]
+        sample[0]: ["03/28", "Info", "Scheduled maintenance"]
 ```
 
-## Fluxo de uso
+## Usage workflow
 
-### 1. Inspect geral — entender a pagina
+### 1. General inspect -- understand the page
 
 ```python
-estrutura = await browser.inspect(depth=5, samples=2)
-print(estrutura)
+structure = await browser.inspect(depth=5, samples=2)
+print(structure)
 ```
 
-Resultado:
+Result:
 ```
 <div.quote> x 10 items
   sample[0]: "The world as we have created it..."
 ```
 
-### 2. Inspect focado — ver dentro de um elemento
+### 2. Focused inspect -- view inside an element
 
 ```python
-detalhe = await browser.inspect(".quote", depth=5)
-print(detalhe)
+detail = await browser.inspect(".quote", depth=5)
+print(detail)
 ```
 
-Resultado:
+Result:
 ```
 <div.quote>
   <span.text> "The world as we have created it..."
@@ -71,33 +71,33 @@ Resultado:
       sample[0]: "change"
 ```
 
-### 3. Usar os seletores descobertos
+### 3. Use the discovered selectors
 
 ```python
 quotes = await browser.extract_data(
     container="body",
     row=".quote",
-    columns={"texto": ".text", "autor": ".author"}
+    columns={"text": ".text", "author": ".author"}
 )
 ```
 
-## O que o inspect mostra
+## What inspect shows
 
-| Elemento | Como aparece |
-|----------|-------------|
-| IDs e classes | `<div#login-form.container>` |
+| Element | How it appears |
+|---------|---------------|
+| IDs and classes | `<div#login-form.container>` |
 | Inputs | `<input#email type="text" placeholder="Email" [required]>` |
 | Links | `<a.logo href="/home">` |
-| Texto | `<button> "Entrar"` |
-| Tabelas | `<table> 3 cols x 12 rows` + headers + samples |
-| Selects | `<select> 5 options: ["Op1", "Op2", ...]` |
-| Listas | `<div.card> x 20 items` + samples |
+| Text | `<button> "Sign In"` |
+| Tables | `<table> 3 cols x 12 rows` + headers + samples |
+| Selects | `<select> 5 options: ["Opt1", "Opt2", ...]` |
+| Lists | `<div.card> x 20 items` + samples |
 
-## Quando usar
+## When to use
 
-| Cenario | Comando |
-|---------|---------|
-| Entender pagina desconhecida | `inspect(depth=5)` |
-| Encontrar seletores para automacao | `inspect(".container", depth=5)` |
-| Alimentar IA com contexto da pagina | `inspect(depth=3, samples=2)` |
-| Debug rapido sem DevTools | `inspect()` |
+| Scenario | Command |
+|----------|---------|
+| Understand an unknown page | `inspect(depth=5)` |
+| Find selectors for automation | `inspect(".container", depth=5)` |
+| Feed AI with page context | `inspect(depth=3, samples=2)` |
+| Quick debug without DevTools | `inspect()` |

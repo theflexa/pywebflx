@@ -1,8 +1,8 @@
 # use_browser
 
-Ponto de entrada principal do PyWebFlx. Conecta a uma aba Chrome e retorna um `BrowserContext` com todos os metodos de automacao.
+Main entry point for PyWebFlx. Connects to a Chrome tab and returns a `BrowserContext` with all automation methods.
 
-## Assinatura
+## Signature
 
 ```python
 async with use_browser(
@@ -14,49 +14,47 @@ async with use_browser(
     ...
 ```
 
-## Parametros
+## Parameters
 
-| Parametro | Tipo | Default | Descricao |
-|-----------|------|---------|-----------|
-| `url` | `str` | `None` | URL para buscar (match parcial) e/ou abrir |
-| `title` | `str` | `None` | Titulo da aba para buscar (match parcial) |
-| `open` | `str` | `"if_not_open"` | Comportamento de abertura (ver abaixo) |
-| `config` | `PyWebFlxConfig` | `None` | Configuracao customizada |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `url` | `str` | `None` | URL to search (partial match) and/or open |
+| `title` | `str` | `None` | Tab title to search (partial match) |
+| `open` | `str` | `"if_not_open"` | Opening behavior (see below) |
+| `config` | `PyWebFlxConfig` | `None` | Custom configuration |
 
-### Parametro `open`
+### `open` parameter
 
-Inspirado no UiPath:
+| Value | Behavior |
+|-------|----------|
+| `"if_not_open"` | Searches for an existing tab. If not found, opens the `url`. **(default)** |
+| `"open"` | Always opens a new tab with the `url`. |
+| `"never"` | Only connects to an existing tab. Never opens. |
 
-| Valor | Comportamento |
-|-------|--------------|
-| `"if_not_open"` | Busca aba existente. Se nao encontrar, abre a `url`. **(padrao)** |
-| `"open"` | Sempre abre nova aba com a `url`. |
-| `"never"` | Apenas conecta a aba existente. Nunca abre. |
+## Examples
 
-## Exemplos
-
-### Basico — abre se nao existir
+### Basic -- opens if not found
 
 ```python
 async with use_browser(url="https://quotes.toscrape.com/") as browser:
     await browser.click("#btn")
 ```
 
-### Buscar por titulo
+### Search by title
 
 ```python
 async with use_browser(title="Portal Sicoob", open="never") as browser:
-    saldo = await browser.get_text(".saldo")
+    balance = await browser.get_text(".balance")
 ```
 
-### Sempre abrir nova aba
+### Always open a new tab
 
 ```python
 async with use_browser(url="https://example.com", open="open") as browser:
     await browser.type_into("#email", text="user@email.com")
 ```
 
-### Com configuracao customizada
+### With custom configuration
 
 ```python
 from pywebflx import PyWebFlxConfig
@@ -64,21 +62,21 @@ from pywebflx import PyWebFlxConfig
 config = PyWebFlxConfig(default_timeout=30, retry_count=3)
 
 async with use_browser(url="https://example.com", config=config) as browser:
-    await browser.click("#btn", timeout=60)  # 60 sobrescreve 30
+    await browser.click("#btn", timeout=60)  # 60 overrides 30
 ```
 
-### Multiplas abas
+### Multiple tabs
 
 ```python
-async with use_browser(url="https://portal.com") as aba1:
-    async with use_browser(url="https://email.com") as aba2:
-        dado = await aba1.get_text(".saldo")
-        await aba2.type_into("#corpo", text=dado)
+async with use_browser(url="https://portal.com") as tab1:
+    async with use_browser(url="https://email.com") as tab2:
+        data = await tab1.get_text(".balance")
+        await tab2.type_into("#body", text=data)
 ```
 
-## Excecoes
+## Exceptions
 
-| Excecao | Quando |
-|---------|--------|
-| `BrowserNotFoundError` | Aba nao encontrada e `open="never"` |
-| `ExtensionNotConnectedError` | Extensao Chrome nao esta conectada |
+| Exception | When |
+|-----------|------|
+| `BrowserNotFoundError` | Tab not found and `open="never"` |
+| `ExtensionNotConnectedError` | Chrome extension is not connected |

@@ -1,38 +1,38 @@
 # JavaScript
 
-Methods for executing custom JavaScript on the page.
+Metodos para executar JavaScript customizado na pagina.
 
 ---
 
 ## execute_js
 
-Executes JavaScript code and returns the result.
+Executa codigo JavaScript e retorna o resultado.
 
 ```python
 result = await browser.execute_js("return document.title")
 ```
 
-### Examples
+### Exemplos
 
 ```python
-# Page title
+# Titulo da pagina
 title = await browser.execute_js("return document.title")
 
-# Current URL
+# URL atual
 url = await browser.execute_js("return window.location.href")
 
-# Scroll to bottom
+# Rolar ate o final
 await browser.execute_js("return window.scrollTo(0, document.body.scrollHeight)")
 ```
 
-!!! note "Limitation"
-    `execute_js` supports simple expressions with `return`. For complex logic, use `extract_data` or manipulate via `click`/`type_into`.
+!!! note "Limitacao"
+    `execute_js` suporta expressoes simples com `return`. Para logica complexa, use `extract_data` ou manipule via `click`/`type_into`.
 
 ---
 
 ## inject_js
 
-Executes JavaScript without waiting for a return value.
+Executa JavaScript sem aguardar um valor de retorno.
 
 ```python
 await browser.inject_js("window.scrollTo(0, 0)")
@@ -42,7 +42,7 @@ await browser.inject_js("window.scrollTo(0, 0)")
 
 ## switch_to (iframes)
 
-Switches the context into an iframe.
+Muda o contexto para dentro de um iframe.
 
 ```python
 async with browser.switch_to("#iframe-content") as frame:
@@ -50,5 +50,5 @@ async with browser.switch_to("#iframe-content") as frame:
     text = await frame.get_text(".result")
 ```
 
-!!! warning "Under development"
-    Iframe support is planned for v2. Currently `switch_to` returns the same context.
+!!! warning "Em desenvolvimento"
+    O suporte a iframes esta planejado para a v2. Atualmente `switch_to` retorna o mesmo contexto.

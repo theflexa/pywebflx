@@ -1,12 +1,12 @@
-# Navigation
+# Navegacao
 
-Methods for navigating between pages, refreshing, and closing tabs.
+Metodos para navegar entre paginas, atualizar e fechar abas.
 
 ---
 
 ## navigate_to
 
-Navigates to a URL in the current tab.
+Navega para uma URL na aba atual.
 
 ```python
 await browser.navigate_to("https://portal.example.com/dashboard")
@@ -16,7 +16,7 @@ await browser.navigate_to("https://portal.example.com/dashboard")
 
 ## go_back
 
-Goes back in the browser history.
+Volta no historico do navegador.
 
 ```python
 await browser.go_back()
@@ -26,7 +26,7 @@ await browser.go_back()
 
 ## go_forward
 
-Goes forward in the browser history.
+Avanca no historico do navegador.
 
 ```python
 await browser.go_forward()
@@ -36,7 +36,7 @@ await browser.go_forward()
 
 ## refresh
 
-Reloads the current page.
+Recarrega a pagina atual.
 
 ```python
 await browser.refresh()
@@ -46,7 +46,7 @@ await browser.refresh()
 
 ## close_tab
 
-Closes the current tab.
+Fecha a aba atual.
 
 ```python
 await browser.close_tab()
@@ -56,7 +56,7 @@ await browser.close_tab()
 
 ## close_browser
 
-Closes the browser (all tabs).
+Fecha o navegador (todas as abas).
 
 ```python
 await browser.close_browser()

@@ -1,8 +1,8 @@
-# Configuracao
+# Configuration
 
-O `PyWebFlxConfig` controla timeouts, retries, porta WebSocket e logging.
+`PyWebFlxConfig` controls timeouts, retries, WebSocket port, and logging.
 
-## Assinatura
+## Signature
 
 ```python
 from pywebflx import PyWebFlxConfig
@@ -17,44 +17,44 @@ config = PyWebFlxConfig(
 )
 ```
 
-## Parametros
+## Parameters
 
-| Parametro | Tipo | Default | Descricao |
-|-----------|------|---------|-----------|
-| `default_timeout` | `float` | `10` | Timeout padrao em segundos |
-| `delay_between_actions` | `float` | `0.3` | Delay entre acoes consecutivas |
-| `retry_count` | `int` | `0` | Tentativas padrao em caso de falha |
-| `on_error` | `str` | `"raise"` | `"raise"` ou `"continue"` |
-| `ws_port` | `int` | `9819` | Porta do WebSocket server |
-| `log_level` | `str` | `"INFO"` | Nivel de log |
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `default_timeout` | `float` | `10` | Default timeout in seconds |
+| `delay_between_actions` | `float` | `0.3` | Delay between consecutive actions |
+| `retry_count` | `int` | `0` | Default retry attempts on failure |
+| `on_error` | `str` | `"raise"` | `"raise"` or `"continue"` |
+| `ws_port` | `int` | `9819` | WebSocket server port |
+| `log_level` | `str` | `"INFO"` | Log level |
 
-## Prioridade
+## Priority
 
-A resolucao de parametros segue esta ordem:
+Parameter resolution follows this order:
 
 ```
-parametro da acao  >  config do use_browser  >  defaults globais
+action parameter  >  use_browser config  >  global defaults
 ```
 
 ```python
 # Global: timeout = 10 (default)
 # Config: timeout = 20
-# Acao: timeout = 60 (vence)
+# Action: timeout = 60 (wins)
 
 config = PyWebFlxConfig(default_timeout=20)
 
 async with use_browser(url="https://example.com", config=config) as browser:
-    await browser.click("#btn", timeout=60)  # usa 60
-    await browser.click("#btn2")             # usa 20
+    await browser.click("#btn", timeout=60)  # uses 60
+    await browser.click("#btn2")             # uses 20
 ```
 
-## Defaults globais
+## Global defaults
 
 ```python
-# Afetar todas as novas instancias
+# Affect all new instances
 PyWebFlxConfig.set_defaults(default_timeout=15, retry_count=3)
 
-# Resetar para os valores originais
+# Reset to original values
 PyWebFlxConfig.reset_defaults()
 ```
 
@@ -63,33 +63,33 @@ PyWebFlxConfig.reset_defaults()
 ```python
 from pywebflx import configure_logging
 
-configure_logging(level="INFO")                        # console (padrao)
-configure_logging(level="DEBUG", sink="automacao.log") # arquivo
-configure_logging(level="DISABLED")                    # silencioso
+configure_logging(level="INFO")                        # console (default)
+configure_logging(level="DEBUG", sink="automation.log") # file
+configure_logging(level="DISABLED")                    # silent
 ```
 
-### Niveis
+### Levels
 
-| Nivel | O que loga |
-|-------|-----------|
-| `ERROR` | Falha final (apos todos os retries) |
-| `WARN` | Retry, reconexao, fallback |
-| `INFO` | Acao executada com sucesso |
-| `DEBUG` | Detalhes internos (seletor, payload JSON) |
-| `TRACE` | Tudo (bytes do WebSocket, DOM parcial) |
-| `DISABLED` | Nada |
+| Level | What it logs |
+|-------|-------------|
+| `ERROR` | Final failure (after all retries) |
+| `WARN` | Retry, reconnection, fallback |
+| `INFO` | Action executed successfully |
+| `DEBUG` | Internal details (selector, JSON payload) |
+| `TRACE` | Everything (WebSocket bytes, partial DOM) |
+| `DISABLED` | Nothing |
 
-### Formato
+### Format
 
 ```
-2026-03-28 14:32:05.123 [INFO]  [browser.click] #btn-salvar -> tab:42 -> success (120ms)
-2026-03-28 14:32:06.102 [WARN]  [browser.click] #btn-enviar -> tab:42 -> retry 1/3
-2026-03-28 14:32:08.001 [ERROR] [browser.extract_table] #tabela -> tab:42 -> failed: TabClosedError
+2026-03-28 14:32:05.123 [INFO]  [browser.click] #btn-save -> tab:42 -> success (120ms)
+2026-03-28 14:32:06.102 [WARN]  [browser.click] #btn-send -> tab:42 -> retry 1/3
+2026-03-28 14:32:08.001 [ERROR] [browser.extract_table] #table -> tab:42 -> failed: TabClosedError
 ```
 
-### Override por acao
+### Per-action override
 
 ```python
-await browser.click("#btn-critico", log_level="DEBUG")   # mais detalhe
-await browser.click(row_selector, log_level="WARN")      # menos ruido em loop
+await browser.click("#critical-btn", log_level="DEBUG")   # more detail
+await browser.click(row_selector, log_level="WARN")       # less noise in loops
 ```

@@ -1,8 +1,8 @@
 # PyWebFlx
 
-**Browser automation para paginas Chrome ja abertas, inspirado na UiPath.**
+**Browser automation for already-open Chrome pages.**
 
-PyWebFlx e uma biblioteca Python que se conecta a paginas ja abertas no Chrome via uma extensao (Manifest V3) + WebSocket. Diferente do Selenium, nao cria uma instancia sandbox — voce automatiza o navegador real do usuario.
+PyWebFlx is a Python library that connects to pages already open in Chrome via an extension (Manifest V3) + WebSocket. Unlike Selenium, it does not create a sandbox instance -- you automate the user's real browser.
 
 ---
 
@@ -14,55 +14,55 @@ from pywebflx import use_browser
 
 async def main():
     async with use_browser(url="https://quotes.toscrape.com/") as browser:
-        # Ver estrutura da pagina
-        estrutura = await browser.inspect(depth=5)
-        print(estrutura)
+        # View page structure
+        structure = await browser.inspect(depth=5)
+        print(structure)
 
-        # Extrair dados
+        # Extract data
         quotes = await browser.extract_data(
             container="body",
             row=".quote",
-            columns={"texto": ".text", "autor": ".author"}
+            columns={"text": ".text", "author": ".author"}
         )
         for q in quotes:
-            print(f"{q['autor']}: {q['texto'][:60]}...")
+            print(f"{q['author']}: {q['text'][:60]}...")
 
 asyncio.run(main())
 ```
 
-## Por que PyWebFlx?
+## Why PyWebFlx?
 
 | | PyWebFlx | Selenium | Playwright |
 |---|---|---|---|
-| Usa Chrome ja aberto | :white_check_mark: | :x: | :x: |
-| Reaproveita sessao/login | :white_check_mark: | :x: | :x: |
-| API async/await | :white_check_mark: | :x: | :white_check_mark: |
-| Sem WebDriver/binario | :white_check_mark: | :x: | :x: |
-| Inspect otimizado pra IA | :white_check_mark: | :x: | :x: |
-| Setup | Extensao Chrome | WebDriver + config | `playwright install` |
+| Uses already-open Chrome | :white_check_mark: | :x: | :x: |
+| Reuses session/login | :white_check_mark: | :x: | :x: |
+| Async/await API | :white_check_mark: | :x: | :white_check_mark: |
+| No WebDriver/binary | :white_check_mark: | :x: | :x: |
+| AI-optimized inspect | :white_check_mark: | :x: | :x: |
+| Setup | Chrome Extension | WebDriver + config | `playwright install` |
 
-## Como funciona
+## How it works
 
 ```
-Script Python                    Chrome Extension
+Python Script                   Chrome Extension
       |                                |
-      |  1. Inicia WebSocket :9819     |
-      |<------------------------------>|  2. Conecta automaticamente
+      |  1. Starts WebSocket :9819     |
+      |<------------------------------>|  2. Connects automatically
       |                                |
-      |  3. Comando JSON               |
-      |------------------------------->|  4. Injeta script na aba
+      |  3. JSON command               |
+      |------------------------------->|  4. Injects script into tab
       |                                |     via chrome.scripting
-      |  5. Resultado JSON             |
+      |  5. JSON result                |
       |<-------------------------------|
       |                                |
 ```
 
-## Principais funcionalidades
+## Main features
 
-- **`use_browser()`** — Conecta a abas por URL ou titulo, abre se nao existir
-- **`click()`, `type_into()`** — Interacao com elementos (CSS, XPath, texto)
-- **`get_text()`, `extract_data()`** — Extracao de dados estruturados
-- **`inspect()`** — Visao resumida do DOM, otimizada para IAs
-- **`extract_table()`** — Extracao de tabelas HTML com paginacao
-- **`wait_element()`, `element_exists()`** — Sincronizacao
-- **`execute_js()`** — JavaScript customizado
+- **`use_browser()`** -- Connects to tabs by URL or title, opens if not found
+- **`click()`, `type_into()`** -- Element interaction (CSS, XPath, text)
+- **`get_text()`, `extract_data()`** -- Structured data extraction
+- **`inspect()`** -- Summarized DOM view, optimized for AIs
+- **`extract_table()`** -- HTML table extraction with pagination
+- **`wait_element()`, `element_exists()`** -- Synchronization
+- **`execute_js()`** -- Custom JavaScript
