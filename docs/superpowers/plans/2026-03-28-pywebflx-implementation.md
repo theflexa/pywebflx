@@ -1,6 +1,6 @@
 # PyWebFlx Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Build a Python library + Chrome extension that enables browser automation on already-open Chrome pages via WebSocket, inspired by UiPath.
 
@@ -84,7 +84,7 @@ pywebflx/
 - Create: `tests/conftest.py`
 - Create: `docs/backlog.md`
 
-- [ ] **Step 1: Create pyproject.toml**
+- [x] **Step 1: Create pyproject.toml**
 
 ```toml
 [build-system]
@@ -122,7 +122,7 @@ asyncio_mode = "auto"
 testpaths = ["tests"]
 ```
 
-- [ ] **Step 2: Create src/pywebflx/__init__.py**
+- [x] **Step 2: Create src/pywebflx/__init__.py**
 
 ```python
 """PyWebFlx — Browser automation for already-open Chrome pages."""
@@ -130,13 +130,13 @@ testpaths = ["tests"]
 __version__ = "0.1.0"
 ```
 
-- [ ] **Step 3: Create empty tests/conftest.py**
+- [x] **Step 3: Create empty tests/conftest.py**
 
 ```python
 """Shared test fixtures for PyWebFlx."""
 ```
 
-- [ ] **Step 4: Create docs/backlog.md**
+- [x] **Step 4: Create docs/backlog.md**
 
 ```markdown
 # PyWebFlx — Backlog v2
@@ -167,14 +167,14 @@ Funcionalidades planejadas para versoes futuras.
 - Screen Scraping via OCR
 ```
 
-- [ ] **Step 5: Create actions package**
+- [x] **Step 5: Create actions package**
 
 ```python
 # src/pywebflx/actions/__init__.py
 """Action modules for PyWebFlx browser automation."""
 ```
 
-- [ ] **Step 6: Install dev dependencies and verify**
+- [x] **Step 6: Install dev dependencies and verify**
 
 Run: `cd "C:\Users\Guilherme Flexa\Desktop\Projetos Sicoob\Projetos Python\extension_python_integration" && pip install -e ".[dev]"`
 Expected: Successfully installed pywebflx-0.1.0
@@ -182,7 +182,7 @@ Expected: Successfully installed pywebflx-0.1.0
 Run: `python -c "import pywebflx; print(pywebflx.__version__)"`
 Expected: `0.1.0`
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add pyproject.toml src/ tests/conftest.py docs/backlog.md
@@ -197,7 +197,7 @@ git commit -m "feat: scaffold pywebflx project structure"
 - Create: `src/pywebflx/exceptions.py`
 - Create: `tests/test_exceptions.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_exceptions.py
@@ -316,12 +316,12 @@ class TestExceptionContext:
         assert str(exc) == "something went wrong"
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_exceptions.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.exceptions'`
 
-- [ ] **Step 3: Implement exceptions module**
+- [x] **Step 3: Implement exceptions module**
 
 ```python
 # src/pywebflx/exceptions.py
@@ -634,12 +634,12 @@ class ConfigError(PyWebFlxError):
         super().__init__(f"Config error: {param}={value!r} — {reason}")
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `pytest tests/test_exceptions.py -v`
 Expected: All 14 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pywebflx/exceptions.py tests/test_exceptions.py
@@ -654,7 +654,7 @@ git commit -m "feat: add exception hierarchy with contextual attributes"
 - Create: `src/pywebflx/config.py`
 - Create: `tests/test_config.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_config.py
@@ -775,12 +775,12 @@ class TestPyWebFlxConfigResolve:
         PyWebFlxConfig.reset_defaults()
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_config.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.config'`
 
-- [ ] **Step 3: Implement config module**
+- [x] **Step 3: Implement config module**
 
 ```python
 # src/pywebflx/config.py
@@ -918,12 +918,12 @@ class PyWebFlxConfig:
         _global_defaults.clear()
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `pytest tests/test_config.py -v`
 Expected: All 15 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pywebflx/config.py tests/test_config.py
@@ -938,7 +938,7 @@ git commit -m "feat: add PyWebFlxConfig with validation and priority resolution"
 - Create: `src/pywebflx/logging.py`
 - Create: `tests/test_logging.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_logging.py
@@ -1074,12 +1074,12 @@ class TestConfigureLogging:
         configure_logging(timestamp_format="%H:%M:%S")
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_logging.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.logging'`
 
-- [ ] **Step 3: Implement logging module**
+- [x] **Step 3: Implement logging module**
 
 ```python
 # src/pywebflx/logging.py
@@ -1311,12 +1311,12 @@ def _log(level: str, message: str) -> None:
         log.log(py_level, message)
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `pytest tests/test_logging.py -v`
 Expected: All 10 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pywebflx/logging.py tests/test_logging.py
@@ -1331,7 +1331,7 @@ git commit -m "feat: add structured logging with @_logged_action decorator"
 - Create: `src/pywebflx/selectors.py`
 - Create: `tests/test_selectors.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_selectors.py
@@ -1409,12 +1409,12 @@ class TestResolveSelector:
             resolve_selector(None)
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_selectors.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.selectors'`
 
-- [ ] **Step 3: Implement selectors module**
+- [x] **Step 3: Implement selectors module**
 
 ```python
 # src/pywebflx/selectors.py
@@ -1597,12 +1597,12 @@ def _resolve_attributes(
     )
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `pytest tests/test_selectors.py -v`
 Expected: All 11 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pywebflx/selectors.py tests/test_selectors.py
@@ -1617,7 +1617,7 @@ git commit -m "feat: add selector resolution (CSS, XPath, attributes)"
 - Create: `src/pywebflx/protocol.py`
 - Create: `tests/test_protocol.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_protocol.py
@@ -1707,12 +1707,12 @@ class TestParseMessage:
             parse_message(json.dumps({"random": "data"}))
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_protocol.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.protocol'`
 
-- [ ] **Step 3: Implement protocol module**
+- [x] **Step 3: Implement protocol module**
 
 ```python
 # src/pywebflx/protocol.py
@@ -1865,12 +1865,12 @@ def parse_message(raw: str) -> Response | Event:
     raise ValueError(f"Unknown message format: {list(data.keys())}")
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `pytest tests/test_protocol.py -v`
 Expected: All 9 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pywebflx/protocol.py tests/test_protocol.py
@@ -1885,7 +1885,7 @@ git commit -m "feat: add JSON protocol for Python-extension communication"
 - Create: `src/pywebflx/connection.py`
 - Create: `tests/test_connection.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_connection.py
@@ -1957,12 +1957,12 @@ class TestWebSocketServerSendReceive:
             await server.stop()
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_connection.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.connection'`
 
-- [ ] **Step 3: Implement connection module**
+- [x] **Step 3: Implement connection module**
 
 ```python
 # src/pywebflx/connection.py
@@ -2199,12 +2199,12 @@ class WebSocketServer:
                     pass
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `pytest tests/test_connection.py -v`
 Expected: All 6 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pywebflx/connection.py tests/test_connection.py
@@ -2220,11 +2220,11 @@ git commit -m "feat: add WebSocket server for extension communication"
 - Create: `extension/background.js`
 - Create: `extension/icons/` (placeholder)
 
-- [ ] **Step 1: Create extension directory structure**
+- [x] **Step 1: Create extension directory structure**
 
 Run: `mkdir -p extension/icons extension/injected`
 
-- [ ] **Step 2: Create manifest.json**
+- [x] **Step 2: Create manifest.json**
 
 ```json
 {
@@ -2253,7 +2253,7 @@ Run: `mkdir -p extension/icons extension/injected`
 }
 ```
 
-- [ ] **Step 3: Create background.js**
+- [x] **Step 3: Create background.js**
 
 ```javascript
 // background.js — PyWebFlx Chrome Extension Service Worker
@@ -2857,12 +2857,12 @@ function domActionHandler(action, params) {
 connect();
 ```
 
-- [ ] **Step 4: Verify manifest.json is valid JSON**
+- [x] **Step 4: Verify manifest.json is valid JSON**
 
 Run: `python -c "import json; json.load(open('extension/manifest.json'))"`
 Expected: No error
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add extension/
@@ -2877,7 +2877,7 @@ git commit -m "feat: add Chrome extension with Manifest V3, WS client, DOM actio
 - Create: `src/pywebflx/tab_manager.py`
 - Create: `tests/test_tab_manager.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_tab_manager.py
@@ -2999,12 +2999,12 @@ class TestFindOrOpen:
             await mgr.find_or_open(title="Portal")
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_tab_manager.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.tab_manager'`
 
-- [ ] **Step 3: Implement tab manager module**
+- [x] **Step 3: Implement tab manager module**
 
 ```python
 # src/pywebflx/tab_manager.py
@@ -3123,12 +3123,12 @@ class TabManager:
             raise BrowserNotFoundError(title=title, url=url)
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `pytest tests/test_tab_manager.py -v`
 Expected: All 8 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pywebflx/tab_manager.py tests/test_tab_manager.py
@@ -3144,7 +3144,7 @@ git commit -m "feat: add TabManager with find, create, and find_or_open"
 - Create: `tests/test_browser.py`
 - Modify: `src/pywebflx/__init__.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_browser.py
@@ -3209,12 +3209,12 @@ class TestUseBrowser:
             mock_server.stop.assert_called_once()
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_browser.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.browser'`
 
-- [ ] **Step 3: Implement browser module**
+- [x] **Step 3: Implement browser module**
 
 ```python
 # src/pywebflx/browser.py
@@ -4038,7 +4038,7 @@ async def use_browser(
         await server.stop()
 ```
 
-- [ ] **Step 4: Update __init__.py with public exports**
+- [x] **Step 4: Update __init__.py with public exports**
 
 ```python
 # src/pywebflx/__init__.py
@@ -4102,17 +4102,17 @@ __all__ = [
 ]
 ```
 
-- [ ] **Step 5: Run tests to verify they pass**
+- [x] **Step 5: Run tests to verify they pass**
 
 Run: `pytest tests/test_browser.py -v`
 Expected: All 3 tests PASS
 
-- [ ] **Step 6: Run all tests to verify nothing is broken**
+- [x] **Step 6: Run all tests to verify nothing is broken**
 
 Run: `pytest tests/ -v`
 Expected: All tests PASS
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/pywebflx/browser.py src/pywebflx/__init__.py tests/test_browser.py
@@ -4127,7 +4127,7 @@ git commit -m "feat: add BrowserContext with all actions and use_browser context
 - Create: `src/pywebflx/cli.py`
 - Create: `tests/test_cli.py`
 
-- [ ] **Step 1: Write failing tests**
+- [x] **Step 1: Write failing tests**
 
 ```python
 # tests/test_cli.py
@@ -4161,12 +4161,12 @@ class TestCLI:
         assert "extension" in result.output.lower() or "connect" in result.output.lower()
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [x] **Step 2: Run tests to verify they fail**
 
 Run: `pytest tests/test_cli.py -v`
 Expected: FAIL — `ModuleNotFoundError: No module named 'pywebflx.cli'`
 
-- [ ] **Step 3: Implement CLI module**
+- [x] **Step 3: Implement CLI module**
 
 ```python
 # src/pywebflx/cli.py
@@ -4291,12 +4291,12 @@ def check():
         sys.exit(1)
 ```
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [x] **Step 4: Run tests to verify they pass**
 
 Run: `pytest tests/test_cli.py -v`
 Expected: All 3 tests PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/pywebflx/cli.py tests/test_cli.py
@@ -4310,17 +4310,17 @@ git commit -m "feat: add CLI with install-extension and check commands"
 **Files:**
 - No new files. This task validates everything works together.
 
-- [ ] **Step 1: Run full test suite**
+- [x] **Step 1: Run full test suite**
 
 Run: `pytest tests/ -v --tb=short`
 Expected: All tests PASS (~50+ tests)
 
-- [ ] **Step 2: Verify package installs cleanly**
+- [x] **Step 2: Verify package installs cleanly**
 
 Run: `pip install -e ".[dev]" && python -c "from pywebflx import use_browser, PyWebFlxConfig, configure_logging; print('All imports OK')"`
 Expected: `All imports OK`
 
-- [ ] **Step 3: Verify CLI works**
+- [x] **Step 3: Verify CLI works**
 
 Run: `pywebflx --version`
 Expected: `pywebflx, version 0.1.0`
@@ -4328,12 +4328,12 @@ Expected: `pywebflx, version 0.1.0`
 Run: `pywebflx install-extension`
 Expected: Shows installation instructions with extension path
 
-- [ ] **Step 4: Verify extension manifest is valid**
+- [x] **Step 4: Verify extension manifest is valid**
 
 Run: `python -c "import json; m = json.load(open('extension/manifest.json')); assert m['manifest_version'] == 3; print('Manifest OK')"`
 Expected: `Manifest OK`
 
-- [ ] **Step 5: Final commit**
+- [x] **Step 5: Final commit**
 
 ```bash
 git add -A
