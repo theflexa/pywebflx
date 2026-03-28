@@ -12,11 +12,12 @@ Example:
 from __future__ import annotations
 
 import asyncio
-import json
 import subprocess
 import sys
-import winreg
 from pathlib import Path
+
+if sys.platform == "win32":
+    import winreg
 
 import click
 
