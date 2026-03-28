@@ -405,7 +405,7 @@
   <span class="md-ellipsis">
     
   
-    use_browser
+    Acessar Browser
   
 
     
@@ -596,7 +596,7 @@
   <a href="#parametros" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -618,7 +618,7 @@
   <a href="#exemplo-citacoes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemplo -- Citacoes
+        Exemplo -- Citações
       
     </span>
   </a>
@@ -668,7 +668,7 @@
   <a href="#parametros_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -1112,7 +1112,7 @@
   <a href="#parametros" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -1134,7 +1134,7 @@
   <a href="#exemplo-citacoes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exemplo -- Citacoes
+        Exemplo -- Citações
       
     </span>
   </a>
@@ -1184,7 +1184,7 @@
   <a href="#parametros_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -1238,18 +1238,18 @@
   
 
 
-<h1 id="extracao-de-dados">Extracao de Dados<a class="headerlink" href="#extracao-de-dados" title="Permanent link">&para;</a></h1>
-<p>Metodos para extrair texto, atributos e dados estruturados da pagina.</p>
+<h1 id="extracao-de-dados">Extração de Dados<a class="headerlink" href="#extracao-de-dados" title="Permanent link">&para;</a></h1>
+<p>Métodos para extrair texto, atributos e dados estruturados da página.</p>
 <hr />
 <h2 id="get_text">get_text<a class="headerlink" href="#get_text" title="Permanent link">&para;</a></h2>
-<p>Retorna o texto visivel de um elemento.</p>
+<p>Retorna o texto visível de um elemento.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">text</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="exemplo">Exemplo<a class="headerlink" href="#exemplo" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">saldo</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="s2">&quot;.account-balance&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># &quot;R$ 1.200,00&quot;</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">titulo</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">título</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># &quot;Painel&quot;</span>
 </code></pre></div>
 <hr />
@@ -1266,7 +1266,7 @@
 </code></pre></div>
 <hr />
 <h2 id="get_full_text">get_full_text<a class="headerlink" href="#get_full_text" title="Permanent link">&para;</a></h2>
-<p>Retorna todo o texto visivel da pagina.</p>
+<p>Retorna todo o texto visível da página.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">text</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">get_full_text</span><span class="p">()</span>
 </code></pre></div>
 <hr />
@@ -1278,14 +1278,14 @@
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;nome_coluna&quot;</span><span class="p">:</span> <span class="s2">&quot;seletor-interno&quot;</span><span class="p">},</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span>
 </code></pre></div>
-<h3 id="parametros">Parametros<a class="headerlink" href="#parametros" title="Permanent link">&para;</a></h3>
+<h3 id="parametros">Parâmetros<a class="headerlink" href="#parametros" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Parametro</th>
+<th>Parâmetro</th>
 <th>Tipo</th>
-<th>Padrao</th>
-<th>Descricao</th>
+<th>Padrão</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
@@ -1311,24 +1311,24 @@
 <td><code>next_page</code></td>
 <td><code>str</code></td>
 <td><code>None</code></td>
-<td>Seletor do botao "Proxima pagina"</td>
+<td>Seletor do botão "Próxima página"</td>
 </tr>
 <tr>
 <td><code>max_pages</code></td>
 <td><code>int</code></td>
 <td><code>100</code></td>
-<td>Maximo de paginas a extrair</td>
+<td>Máximo de páginas a extrair</td>
 </tr>
 </tbody>
 </table>
 <h3 id="retorno">Retorno<a class="headerlink" href="#retorno" title="Permanent link">&para;</a></h3>
 <p>Lista de dicts:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">[</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Citacao 1...&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Einstein&quot;</span><span class="p">},</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Citacao 2...&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Tolkien&quot;</span><span class="p">},</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Citação 1...&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Einstein&quot;</span><span class="p">},</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Citação 2...&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">:</span> <span class="s2">&quot;Tolkien&quot;</span><span class="p">},</span>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">]</span>
 </code></pre></div>
-<h3 id="exemplo-citacoes">Exemplo -- Citacoes<a class="headerlink" href="#exemplo-citacoes" title="Permanent link">&para;</a></h3>
+<h3 id="exemplo-citacoes">Exemplo -- Citações<a class="headerlink" href="#exemplo-citacoes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">quotes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">extract_data</span><span class="p">(</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">container</span><span class="o">=</span><span class="s2">&quot;body&quot;</span><span class="p">,</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">row</span><span class="o">=</span><span class="s2">&quot;.quote&quot;</span><span class="p">,</span>
@@ -1345,7 +1345,7 @@
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">row</span><span class="o">=</span><span class="s2">&quot;.product-card&quot;</span><span class="p">,</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="s2">&quot;Nome&quot;</span><span class="p">:</span> <span class="s2">&quot;.card-title&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="s2">&quot;Preco&quot;</span><span class="p">:</span> <span class="s2">&quot;.card-price&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="s2">&quot;Preço&quot;</span><span class="p">:</span> <span class="s2">&quot;.card-price&quot;</span><span class="p">,</span>
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>        <span class="s2">&quot;Estoque&quot;</span><span class="p">:</span> <span class="s2">&quot;.card-stock span&quot;</span><span class="p">,</span>
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="p">},</span>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="n">next_page</span><span class="o">=</span><span class="s2">&quot;#btn-next&quot;</span><span class="p">,</span>
@@ -1354,7 +1354,7 @@
 </code></pre></div>
 <h3 id="como-descobrir-seletores">Como descobrir seletores<a class="headerlink" href="#como-descobrir-seletores" title="Permanent link">&para;</a></h3>
 <p>Use <code>inspect()</code> para mapear a estrutura:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 1. Ver a pagina geral</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 1. Ver a página geral</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># Mostra: &lt;div.quote&gt; x 10 items</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
@@ -1370,17 +1370,17 @@
 </code></pre></div>
 <hr />
 <h2 id="extract_table">extract_table<a class="headerlink" href="#extract_table" title="Permanent link">&para;</a></h2>
-<p>Extrai dados de uma <code>&lt;table&gt;</code> HTML. Usa os cabecalhos como chaves.</p>
+<p>Extrai dados de uma <code>&lt;table&gt;</code> HTML. Usa os cabeçalhos como chaves.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">extract_table</span><span class="p">(</span><span class="n">selector</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="parametros_1">Parametros<a class="headerlink" href="#parametros_1" title="Permanent link">&para;</a></h3>
+<h3 id="parametros_1">Parâmetros<a class="headerlink" href="#parametros_1" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Parametro</th>
+<th>Parâmetro</th>
 <th>Tipo</th>
-<th>Padrao</th>
-<th>Descricao</th>
+<th>Padrão</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
@@ -1394,19 +1394,19 @@
 <td><code>next_page</code></td>
 <td><code>str</code></td>
 <td><code>None</code></td>
-<td>Seletor do botao proxima pagina</td>
+<td>Seletor do botão próxima página</td>
 </tr>
 <tr>
 <td><code>max_pages</code></td>
 <td><code>int</code></td>
 <td><code>100</code></td>
-<td>Maximo de paginas</td>
+<td>Máximo de páginas</td>
 </tr>
 </tbody>
 </table>
 <h3 id="retorno_1">Retorno<a class="headerlink" href="#retorno_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">[</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="p">{</span><span class="s2">&quot;Nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Joao&quot;</span><span class="p">,</span> <span class="s2">&quot;CPF&quot;</span><span class="p">:</span> <span class="s2">&quot;123.456.789-00&quot;</span><span class="p">,</span> <span class="s2">&quot;Saldo&quot;</span><span class="p">:</span> <span class="s2">&quot;1.200,00&quot;</span><span class="p">},</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="p">{</span><span class="s2">&quot;Nome&quot;</span><span class="p">:</span> <span class="s2">&quot;João&quot;</span><span class="p">,</span> <span class="s2">&quot;CPF&quot;</span><span class="p">:</span> <span class="s2">&quot;123.456.789-00&quot;</span><span class="p">,</span> <span class="s2">&quot;Saldo&quot;</span><span class="p">:</span> <span class="s2">&quot;1.200,00&quot;</span><span class="p">},</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="p">{</span><span class="s2">&quot;Nome&quot;</span><span class="p">:</span> <span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="s2">&quot;CPF&quot;</span><span class="p">:</span> <span class="s2">&quot;987.654.321-00&quot;</span><span class="p">,</span> <span class="s2">&quot;Saldo&quot;</span><span class="p">:</span> <span class="s2">&quot;3.500,00&quot;</span><span class="p">},</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">]</span>
 </code></pre></div>
@@ -1414,7 +1414,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Tabela simples</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">clientes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">extract_table</span><span class="p">(</span><span class="s2">&quot;#clients-table&quot;</span><span class="p">)</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Com paginacao</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Com paginação</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">clientes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">extract_table</span><span class="p">(</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="s2">&quot;#clients-table&quot;</span><span class="p">,</span>
 <a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    <span class="n">next_page</span><span class="o">=</span><span class="s2">&quot;#btn-next&quot;</span><span class="p">,</span>

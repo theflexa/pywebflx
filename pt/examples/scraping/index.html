@@ -405,7 +405,7 @@
   <span class="md-ellipsis">
     
   
-    use_browser
+    Acessar Browser
   
 
     
@@ -785,7 +785,7 @@
   <a href="#codigo-completo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Codigo completo
+        Código completo
       
     </span>
   </a>
@@ -796,7 +796,7 @@
   <a href="#saida" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Saida
+        Saída
       
     </span>
   </a>
@@ -807,7 +807,7 @@
   <a href="#com-paginacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Com paginacao
+        Com paginação
       
     </span>
   </a>
@@ -921,7 +921,7 @@
   <a href="#codigo-completo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Codigo completo
+        Código completo
       
     </span>
   </a>
@@ -932,7 +932,7 @@
   <a href="#saida" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Saida
+        Saída
       
     </span>
   </a>
@@ -943,7 +943,7 @@
   <a href="#com-paginacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Com paginacao
+        Com paginação
       
     </span>
   </a>
@@ -996,11 +996,11 @@
 <p>Scraping completo do site <a href="https://quotes.toscrape.com/">quotes.toscrape.com</a> usando PyWebFlx.</p>
 <h2 id="o-fluxo">O fluxo<a class="headerlink" href="#o-fluxo" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong><code>inspect()</code></strong> -- entender a pagina</li>
+<li><strong><code>inspect()</code></strong> -- entender a página</li>
 <li><strong><code>inspect(".quote")</code></strong> -- ver a estrutura interna</li>
 <li><strong><code>extract_data()</code></strong> -- extrair usando os seletores descobertos</li>
 </ol>
-<h2 id="codigo-completo">Codigo completo<a class="headerlink" href="#codigo-completo" title="Permanent link">&para;</a></h2>
+<h2 id="codigo-completo">Código completo<a class="headerlink" href="#codigo-completo" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pywebflx</span><span class="w"> </span><span class="kn">import</span> <span class="n">use_browser</span><span class="p">,</span> <span class="n">configure_logging</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -1038,11 +1038,11 @@
 <a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">][:</span><span class="mi">60</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Tags: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">quotes</span><span class="p">)</span><span class="si">}</span><span class="s2"> citacoes&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">quotes</span><span class="p">)</span><span class="si">}</span><span class="s2"> citações&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
 <a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div>
-<h2 id="saida">Saida<a class="headerlink" href="#saida" title="Permanent link">&para;</a></h2>
+<h2 id="saida">Saída<a class="headerlink" href="#saida" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>1. George R.R. Martin: &quot;A reader lives a thousand lives before he dies...
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   Tags: read, readers, reading, reading-books
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>2. C.S. Lewis: &quot;You can never get a cup of tea large enough or a book...
@@ -1050,16 +1050,16 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>3. Marilyn Monroe: &quot;You believe lies so you eventually learn to trust...
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>   Tags: lies, lying, trust
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>...
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Total: 10 citacoes
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>Total: 10 citações
 </code></pre></div>
-<h2 id="com-paginacao">Com paginacao<a class="headerlink" href="#com-paginacao" title="Permanent link">&para;</a></h2>
+<h2 id="com-paginacao">Com paginação<a class="headerlink" href="#com-paginacao" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">scrape_todas_paginas</span><span class="p">():</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://quotes.toscrape.com/&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">browser</span><span class="p">:</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="n">todas_citacoes</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="n">pagina</span> <span class="o">=</span> <span class="mi">1</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pagina </span><span class="si">{</span><span class="n">pagina</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Página </span><span class="si">{</span><span class="n">pagina</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>            <span class="n">quotes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">extract_data</span><span class="p">(</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>                <span class="n">container</span><span class="o">=</span><span class="s2">&quot;body&quot;</span><span class="p">,</span>
@@ -1068,7 +1068,7 @@
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>            <span class="p">)</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>            <span class="n">todas_citacoes</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">quotes</span><span class="p">)</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>            <span class="c1"># Verificar se ha proxima pagina</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>            <span class="c1"># Verificar se há próxima página</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="k">if</span> <span class="ow">not</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">element_exists</span><span class="p">(</span><span class="s2">&quot;li.next a&quot;</span><span class="p">):</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>                <span class="k">break</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
@@ -1076,7 +1076,7 @@
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>            <span class="n">pagina</span> <span class="o">+=</span> <span class="mi">1</span>
 <a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">todas_citacoes</span><span class="p">)</span><span class="si">}</span><span class="s2"> citacoes em </span><span class="si">{</span><span class="n">pagina</span><span class="si">}</span><span class="s2"> paginas&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">todas_citacoes</span><span class="p">)</span><span class="si">}</span><span class="s2"> citações em </span><span class="si">{</span><span class="n">pagina</span><span class="si">}</span><span class="s2"> páginas&quot;</span><span class="p">)</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>        <span class="k">return</span> <span class="n">todas_citacoes</span>
 </code></pre></div>
 <h2 id="exportar-para-csv">Exportar para CSV<a class="headerlink" href="#exportar-para-csv" title="Permanent link">&para;</a></h2>

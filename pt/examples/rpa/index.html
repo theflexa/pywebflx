@@ -403,7 +403,7 @@
   <span class="md-ellipsis">
     
   
-    use_browser
+    Acessar Browser
   
 
     
@@ -800,7 +800,7 @@
   <a href="#cenario" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cenario
+        Cenário
       
     </span>
   </a>
@@ -811,7 +811,7 @@
   <a href="#codigo-completo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Codigo completo
+        Código completo
       
     </span>
   </a>
@@ -822,7 +822,7 @@
   <a href="#fluxo-com-multiplas-abas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fluxo com multiplas abas
+        Fluxo com múltiplas abas
       
     </span>
   </a>
@@ -897,7 +897,7 @@
   <a href="#cenario" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cenario
+        Cenário
       
     </span>
   </a>
@@ -908,7 +908,7 @@
   <a href="#codigo-completo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Codigo completo
+        Código completo
       
     </span>
   </a>
@@ -919,7 +919,7 @@
   <a href="#fluxo-com-multiplas-abas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fluxo com multiplas abas
+        Fluxo com múltiplas abas
       
     </span>
   </a>
@@ -968,11 +968,11 @@
   
 
 
-<h1 id="exemplo-automacao-rpa">Exemplo: Automacao RPA<a class="headerlink" href="#exemplo-automacao-rpa" title="Permanent link">&para;</a></h1>
-<p>Exemplo de automacao de portal web usando PyWebFlx.</p>
-<h2 id="cenario">Cenario<a class="headerlink" href="#cenario" title="Permanent link">&para;</a></h2>
+<h1 id="exemplo-automacao-rpa">Exemplo: Automação RPA<a class="headerlink" href="#exemplo-automacao-rpa" title="Permanent link">&para;</a></h1>
+<p>Exemplo de automação de portal web usando PyWebFlx.</p>
+<h2 id="cenario">Cenário<a class="headerlink" href="#cenario" title="Permanent link">&para;</a></h2>
 <p>Automatizar login em um portal, extrair dados de uma tabela e salvar.</p>
-<h2 id="codigo-completo">Codigo completo<a class="headerlink" href="#codigo-completo" title="Permanent link">&para;</a></h2>
+<h2 id="codigo-completo">Código completo<a class="headerlink" href="#codigo-completo" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pywebflx</span><span class="w"> </span><span class="kn">import</span> <span class="n">use_browser</span><span class="p">,</span> <span class="n">PyWebFlxConfig</span><span class="p">,</span> <span class="n">configure_logging</span>
@@ -986,7 +986,7 @@
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">)</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="c1"># 1. Conectar ao portal (abre se nao estiver aberto)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="c1"># 1. Conectar ao portal (abre se não estiver aberto)</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://portal.example.com&quot;</span><span class="p">,</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
@@ -1001,8 +1001,8 @@
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">wait_element</span><span class="p">(</span><span class="s2">&quot;.dashboard&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">wait_element_vanish</span><span class="p">(</span><span class="s2">&quot;#spinner&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="c1"># 4. Navegar para relatorios</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Relatorios&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="c1"># 4. Navegar para relatórios</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Relatórios&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">wait_element</span><span class="p">(</span><span class="s2">&quot;#clients-table&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
 <a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        <span class="c1"># 5. Extrair tabela</span>
@@ -1019,7 +1019,7 @@
 <a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
 <a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div>
-<h2 id="fluxo-com-multiplas-abas">Fluxo com multiplas abas<a class="headerlink" href="#fluxo-com-multiplas-abas" title="Permanent link">&para;</a></h2>
+<h2 id="fluxo-com-multiplas-abas">Fluxo com múltiplas abas<a class="headerlink" href="#fluxo-com-multiplas-abas" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">transferir_dados</span><span class="p">():</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://portal.com&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">portal</span><span class="p">:</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://email.com&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">email</span><span class="p">:</span>
@@ -1028,7 +1028,7 @@
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>            <span class="c1"># Colar no email</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>            <span class="k">await</span> <span class="n">email</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#new-email&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>            <span class="k">await</span> <span class="n">email</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#subject&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Saldo diario&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>            <span class="k">await</span> <span class="n">email</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#subject&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Saldo diário&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>            <span class="k">await</span> <span class="n">email</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#body&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Saldo: </span><span class="si">{</span><span class="n">saldo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>            <span class="k">await</span> <span class="n">email</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn-send&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -1053,20 +1053,20 @@
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>            <span class="p">)</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="k">except</span> <span class="n">BrowserNotFoundError</span><span class="p">:</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Portal nao esta aberto&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Portal não está aberto&quot;</span><span class="p">)</span>
 <a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
 <a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="k">except</span> <span class="n">ElementTimeoutError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elemento </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">selector</span><span class="si">}</span><span class="s2"> nao apareceu em </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">timeout</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elemento </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">selector</span><span class="si">}</span><span class="s2"> não apareceu em </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">timeout</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    <span class="k">except</span> <span class="n">ElementNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elemento </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">selector</span><span class="si">}</span><span class="s2"> nao encontrado&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elemento </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">selector</span><span class="si">}</span><span class="s2"> não encontrado&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="fluxo-com-dropdown-e-checkbox">Fluxo com dropdown e checkbox<a class="headerlink" href="#fluxo-com-dropdown-e-checkbox" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">preencher_formulario</span><span class="p">():</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://portal.com/cadastro&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">browser</span><span class="p">:</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#nome&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Joao Silva&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#nome&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;João Silva&quot;</span><span class="p">)</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#cpf&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;123.456.789-00&quot;</span><span class="p">)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">select_item</span><span class="p">(</span><span class="s2">&quot;#estado&quot;</span><span class="p">,</span> <span class="s2">&quot;Sao Paulo&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">select_item</span><span class="p">(</span><span class="s2">&quot;#estado&quot;</span><span class="p">,</span> <span class="s2">&quot;São Paulo&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;#aceitar-termos&quot;</span><span class="p">)</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn-cadastrar&quot;</span><span class="p">)</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">wait_element</span><span class="p">(</span><span class="s2">&quot;.success-msg&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>

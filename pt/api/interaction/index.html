@@ -405,7 +405,7 @@
   <span class="md-ellipsis">
     
   
-    use_browser
+    Acessar Browser
   
 
     
@@ -501,7 +501,7 @@
   <a href="#parametros" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -540,7 +540,7 @@
   <a href="#parametros_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -635,7 +635,7 @@
   <a href="#parametros_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -1096,7 +1096,7 @@
   <a href="#parametros" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -1135,7 +1135,7 @@
   <a href="#parametros_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -1230,7 +1230,7 @@
   <a href="#parametros_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametros
+        Parâmetros
       
     </span>
   </a>
@@ -1340,21 +1340,21 @@
   
 
 
-<h1 id="interacao">Interacao<a class="headerlink" href="#interacao" title="Permanent link">&para;</a></h1>
-<p>Metodos para interagir com elementos na pagina: clicar, digitar, selecionar, etc.</p>
+<h1 id="interacao">Interação<a class="headerlink" href="#interacao" title="Permanent link">&para;</a></h1>
+<p>Métodos para interagir com elementos na página: clicar, digitar, selecionar, etc.</p>
 <hr />
 <h2 id="click">click<a class="headerlink" href="#click" title="Permanent link">&para;</a></h2>
 <p>Clica em um elemento.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="parametros">Parametros<a class="headerlink" href="#parametros" title="Permanent link">&para;</a></h3>
+<h3 id="parametros">Parâmetros<a class="headerlink" href="#parametros" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Parametro</th>
+<th>Parâmetro</th>
 <th>Tipo</th>
-<th>Padrao</th>
-<th>Descricao</th>
+<th>Padrão</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
@@ -1368,7 +1368,7 @@
 <td><code>text</code></td>
 <td><code>str</code></td>
 <td><code>None</code></td>
-<td>Buscar por texto visivel</td>
+<td>Buscar por texto visível</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
@@ -1416,7 +1416,7 @@
 <td><code>verify</code></td>
 <td><code>str</code></td>
 <td><code>None</code></td>
-<td>Seletor para verificar apos o clique</td>
+<td>Seletor para verificar após o clique</td>
 </tr>
 <tr>
 <td><code>delay_before</code></td>
@@ -1428,7 +1428,7 @@
 <td><code>delay_after</code></td>
 <td><code>float</code></td>
 <td>config</td>
-<td>Atraso apos o clique</td>
+<td>Atraso após o clique</td>
 </tr>
 </tbody>
 </table>
@@ -1445,10 +1445,10 @@
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># Duplo clique</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#item&quot;</span><span class="p">,</span> <span class="n">click_type</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># Clique com botao direito</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># Clique com botão direito</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#menu&quot;</span><span class="p">,</span> <span class="n">mouse_button</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># Com retentativa e verificacao</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1"># Com retentativa e verificação</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn&quot;</span><span class="p">,</span> <span class="n">retry</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="s2">&quot;.success&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
 <hr />
@@ -1456,14 +1456,14 @@
 <p>Digita texto em um campo, simulando teclas.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;valor&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="parametros_1">Parametros<a class="headerlink" href="#parametros_1" title="Permanent link">&para;</a></h3>
+<h3 id="parametros_1">Parâmetros<a class="headerlink" href="#parametros_1" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Parametro</th>
+<th>Parâmetro</th>
 <th>Tipo</th>
-<th>Padrao</th>
-<th>Descricao</th>
+<th>Padrão</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
@@ -1495,7 +1495,7 @@
 <td><code>delay_between_keys</code></td>
 <td><code>float</code></td>
 <td><code>0</code></td>
-<td>Atraso entre teclas (0 = instantaneo)</td>
+<td>Atraso entre teclas (0 = instantâneo)</td>
 </tr>
 <tr>
 <td><code>timeout</code></td>
@@ -1539,14 +1539,14 @@
 <p>Seleciona um item em um dropdown <code>&lt;select&gt;</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">select_item</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="n">item</span><span class="o">=</span><span class="s2">&quot;valor&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="parametros_2">Parametros<a class="headerlink" href="#parametros_2" title="Permanent link">&para;</a></h3>
+<h3 id="parametros_2">Parâmetros<a class="headerlink" href="#parametros_2" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Parametro</th>
+<th>Parâmetro</th>
 <th>Tipo</th>
-<th>Padrao</th>
-<th>Descricao</th>
+<th>Padrão</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
@@ -1560,7 +1560,7 @@
 <td><code>item</code></td>
 <td><code>str</code></td>
 <td><code>""</code></td>
-<td>Valor, texto ou indice a selecionar</td>
+<td>Valor, texto ou índice a selecionar</td>
 </tr>
 <tr>
 <td><code>by</code></td>
@@ -1571,7 +1571,7 @@
 </tbody>
 </table>
 <h3 id="exemplo_2">Exemplo<a class="headerlink" href="#exemplo_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">select_item</span><span class="p">(</span><span class="s2">&quot;#estado&quot;</span><span class="p">,</span> <span class="s2">&quot;Sao Paulo&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">select_item</span><span class="p">(</span><span class="s2">&quot;#estado&quot;</span><span class="p">,</span> <span class="s2">&quot;São Paulo&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">select_item</span><span class="p">(</span><span class="s2">&quot;#pais&quot;</span><span class="p">,</span> <span class="s2">&quot;BR&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">select_item</span><span class="p">(</span><span class="s2">&quot;#mes&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -1595,25 +1595,25 @@
 </code></pre></div>
 <hr />
 <h2 id="seletores">Seletores<a class="headerlink" href="#seletores" title="Permanent link">&para;</a></h2>
-<p>Todos os metodos aceitam 3 tipos de seletores:</p>
+<p>Todos os métodos aceitam 3 tipos de seletores:</p>
 <table>
 <thead>
 <tr>
 <th>Tipo</th>
 <th>Exemplo</th>
-<th>Deteccao</th>
+<th>Detecção</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>CSS</td>
 <td><code>"#btn"</code>, <code>".class"</code>, <code>"div &gt; span"</code></td>
-<td>Padrao</td>
+<td>Padrão</td>
 </tr>
 <tr>
 <td>XPath</td>
 <td><code>"//button[@id='ok']"</code>, <code>.//div</code></td>
-<td>Comeca com <code>//</code>, <code>./</code> ou <code>(</code></td>
+<td>Começa com <code>//</code>, <code>./</code> ou <code>(</code></td>
 </tr>
 <tr>
 <td>Atributos</td>

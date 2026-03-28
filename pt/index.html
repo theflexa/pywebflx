@@ -351,7 +351,7 @@
   <a href="#inicio-rapido" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inicio Rapido
+        Início Rápido
       
     </span>
   </a>
@@ -494,7 +494,7 @@
   <span class="md-ellipsis">
     
   
-    use_browser
+    Acessar Browser
   
 
     
@@ -886,7 +886,7 @@
   <a href="#inicio-rapido" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inicio Rapido
+        Início Rápido
       
     </span>
   </a>
@@ -947,16 +947,16 @@
 
 
 <h1 id="pywebflx">PyWebFlx<a class="headerlink" href="#pywebflx" title="Permanent link">&para;</a></h1>
-<p><strong>Automacao de navegador para paginas Chrome ja abertas.</strong></p>
-<p>O PyWebFlx e uma biblioteca Python que se conecta a paginas ja abertas no Chrome por meio de uma extensao (Manifest V3) + WebSocket. Diferente do Selenium, ele nao cria uma instancia sandbox -- voce automatiza o navegador real do usuario.</p>
+<p><strong>Automação de navegador para páginas Chrome já abertas.</strong></p>
+<p>O PyWebFlx é uma biblioteca Python que se conecta a páginas já abertas no Chrome por meio de uma extensão (Manifest V3) + WebSocket. Diferente do Selenium, ele não cria uma instância sandbox -- você automatiza o navegador real do usuário.</p>
 <hr />
-<h2 id="inicio-rapido">Inicio Rapido<a class="headerlink" href="#inicio-rapido" title="Permanent link">&para;</a></h2>
+<h2 id="inicio-rapido">Início Rápido<a class="headerlink" href="#inicio-rapido" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pywebflx</span><span class="w"> </span><span class="kn">import</span> <span class="n">use_browser</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://quotes.toscrape.com/&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">browser</span><span class="p">:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="c1"># Ver estrutura da pagina</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="c1"># Ver estrutura da página</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="n">structure</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="n">depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">structure</span><span class="p">)</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
@@ -983,13 +983,13 @@
 </thead>
 <tbody>
 <tr>
-<td>Usa Chrome ja aberto</td>
+<td>Usa Chrome já aberto</td>
 <td>:white_check_mark:</td>
 <td>:x:</td>
 <td>:x:</td>
 </tr>
 <tr>
-<td>Reutiliza sessao/login</td>
+<td>Reutiliza sessão/login</td>
 <td>:white_check_mark:</td>
 <td>:x:</td>
 <td>:x:</td>
@@ -1001,7 +1001,7 @@
 <td>:white_check_mark:</td>
 </tr>
 <tr>
-<td>Sem WebDriver/binario</td>
+<td>Sem WebDriver/binário</td>
 <td>:white_check_mark:</td>
 <td>:x:</td>
 <td>:x:</td>
@@ -1014,14 +1014,14 @@
 </tr>
 <tr>
 <td>Setup</td>
-<td>Extensao Chrome</td>
+<td>Extensão Chrome</td>
 <td>WebDriver + config</td>
 <td><code>playwright install</code></td>
 </tr>
 </tbody>
 </table>
 <h2 id="como-funciona">Como funciona<a class="headerlink" href="#como-funciona" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Script Python                   Extensao Chrome
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Script Python                   Extensão Chrome
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>      |                                |
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>      |  1. Inicia WebSocket :9819     |
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>      |&lt;------------------------------&gt;|  2. Conecta automaticamente
@@ -1035,12 +1035,12 @@
 </code></pre></div>
 <h2 id="principais-funcionalidades">Principais funcionalidades<a class="headerlink" href="#principais-funcionalidades" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong><code>use_browser()</code></strong> -- Conecta a abas por URL ou titulo, abre se nao encontrar</li>
-<li><strong><code>click()</code>, <code>type_into()</code></strong> -- Interacao com elementos (CSS, XPath, texto)</li>
-<li><strong><code>get_text()</code>, <code>extract_data()</code></strong> -- Extracao de dados estruturados</li>
-<li><strong><code>inspect()</code></strong> -- Visao resumida do DOM, otimizada para IAs</li>
-<li><strong><code>extract_table()</code></strong> -- Extracao de tabelas HTML com paginacao</li>
-<li><strong><code>wait_element()</code>, <code>element_exists()</code></strong> -- Sincronizacao</li>
+<li><strong><code>use_browser()</code></strong> -- Conecta a abas por URL ou título, abre se não encontrar</li>
+<li><strong><code>click()</code>, <code>type_into()</code></strong> -- Interação com elementos (CSS, XPath, texto)</li>
+<li><strong><code>get_text()</code>, <code>extract_data()</code></strong> -- Extração de dados estruturados</li>
+<li><strong><code>inspect()</code></strong> -- Visão resumida do DOM, otimizada para IAs</li>
+<li><strong><code>extract_table()</code></strong> -- Extração de tabelas HTML com paginação</li>
+<li><strong><code>wait_element()</code>, <code>element_exists()</code></strong> -- Sincronização</li>
 <li><strong><code>execute_js()</code></strong> -- JavaScript customizado</li>
 </ul>
 
