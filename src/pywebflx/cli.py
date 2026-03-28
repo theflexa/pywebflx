@@ -65,7 +65,18 @@ def _open_chrome_extensions():
     """Open chrome://extensions in the browser."""
     try:
         if sys.platform == "win32":
-            subprocess.Popen(["start", "chrome", "chrome://extensions"], shell=True)
+            import os
+            # Find chrome.exe in common locations
+            for path in [
+                os.path.expandvars(r"%ProgramFiles%\Google\Chrome\Application\chrome.exe"),
+                os.path.expandvars(r"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"),
+                os.path.expandvars(r"%LocalAppData%\Google\Chrome\Application\chrome.exe"),
+            ]:
+                if os.path.exists(path):
+                    subprocess.Popen([path, "chrome://extensions"])
+                    return True
+            # Fallback
+            subprocess.Popen(["start", "", "chrome://extensions"], shell=True)
         elif sys.platform == "darwin":
             subprocess.Popen(["open", "-a", "Google Chrome", "chrome://extensions"])
         else:
