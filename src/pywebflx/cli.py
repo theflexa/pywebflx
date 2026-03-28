@@ -97,40 +97,20 @@ def install_extension():
         click.echo("  Reinstale com: pip install pywebflx")
         return
 
-    # Copy path to clipboard
     ext_path = str(ext_dir)
-    copied = _copy_to_clipboard(ext_path)
 
-    if copied:
-        click.echo("  [1/3] Caminho da extensao copiado para a area de transferencia!")
-        click.echo()
-    else:
-        click.echo(f"  [1/3] Copie este caminho:")
-        click.echo(f"        {ext_path}")
-        click.echo()
-
-    click.echo("  [2/3] O Chrome vai abrir em chrome://extensions")
+    click.echo("  [1/3] Abra o Chrome em: chrome://extensions")
     click.echo("        -> Ative o 'Modo do desenvolvedor' (canto superior direito)")
-    click.echo("        -> Clique em 'Carregar sem compactacao'")
-    click.echo("        -> Cole o caminho (Ctrl+V) na barra de endereco e confirme")
     click.echo()
-
-    # Open Chrome
-    opened = _open_chrome_extensions()
-    if not opened:
-        click.echo("        Nao foi possivel abrir o Chrome automaticamente.")
-        click.echo("        Abra manualmente: chrome://extensions")
-        click.echo()
-
+    click.echo("  [2/3] Clique em 'Carregar sem compactacao' e cole este caminho:")
+    click.echo()
+    click.echo(f"        {ext_path}")
+    click.echo()
     click.echo("  [3/3] Apos instalar, verifique com:")
     click.echo("        pywebflx check")
-    click.echo()
 
-    if copied:
-        click.echo(f"  Caminho: {ext_path}")
-        click.echo("  (ja esta na area de transferencia)")
-    else:
-        click.echo(f"  Caminho: {ext_path}")
+    # Try to open Chrome
+    _open_chrome_extensions()
 
     click.echo()
 
