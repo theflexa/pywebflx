@@ -14,7 +14,6 @@ Example:
 from __future__ import annotations
 
 import asyncio
-import subprocess
 import sys
 from pathlib import Path
 
@@ -35,55 +34,6 @@ def _get_extension_dir() -> Path:
         return dev_ext
     return pkg_ext
 
-
-def _copy_to_clipboard(text: str) -> bool:
-    """Copy text to clipboard (Windows/Mac/Linux)."""
-    try:
-        if sys.platform == "win32":
-            process = subprocess.Popen(
-                ["clip"], stdin=subprocess.PIPE, shell=True,
-            )
-            process.communicate(text.encode("utf-16le"))
-            return True
-        elif sys.platform == "darwin":
-            process = subprocess.Popen(
-                ["pbcopy"], stdin=subprocess.PIPE,
-            )
-            process.communicate(text.encode("utf-8"))
-            return True
-        else:
-            process = subprocess.Popen(
-                ["xclip", "-selection", "clipboard"], stdin=subprocess.PIPE,
-            )
-            process.communicate(text.encode("utf-8"))
-            return True
-    except Exception:
-        return False
-
-
-def _open_chrome_extensions():
-    """Open chrome://extensions in the browser."""
-    try:
-        if sys.platform == "win32":
-            import os
-            # Find chrome.exe in common locations
-            for path in [
-                os.path.expandvars(r"%ProgramFiles%\Google\Chrome\Application\chrome.exe"),
-                os.path.expandvars(r"%ProgramFiles(x86)%\Google\Chrome\Application\chrome.exe"),
-                os.path.expandvars(r"%LocalAppData%\Google\Chrome\Application\chrome.exe"),
-            ]:
-                if os.path.exists(path):
-                    subprocess.Popen([path, "chrome://extensions"])
-                    return True
-            # Fallback
-            subprocess.Popen(["start", "", "chrome://extensions"], shell=True)
-        elif sys.platform == "darwin":
-            subprocess.Popen(["open", "-a", "Google Chrome", "chrome://extensions"])
-        else:
-            subprocess.Popen(["google-chrome", "chrome://extensions"])
-        return True
-    except Exception:
-        return False
 
 
 @click.group()
@@ -110,18 +60,14 @@ def install_extension():
 
     ext_path = str(ext_dir)
 
-    click.echo("  [1/3] Abra o Chrome em: chrome://extensions")
-    click.echo("        -> Ative o 'Modo do desenvolvedor' (canto superior direito)")
+    click.echo("  [1/3] Abra o Chrome e acesse: chrome://extensions")
+    click.echo("        Ative o 'Modo do desenvolvedor' (canto superior direito)")
     click.echo()
     click.echo("  [2/3] Clique em 'Carregar sem compactacao' e cole este caminho:")
     click.echo()
     click.echo(f"        {ext_path}")
     click.echo()
-    click.echo("  [3/3] Apos instalar, verifique com:")
-    click.echo("        pywebflx check")
-
-    # Try to open Chrome
-    _open_chrome_extensions()
+    click.echo("  [3/3] Apos instalar, verifique com: pywebflx check")
 
     click.echo()
 
