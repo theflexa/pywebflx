@@ -1,10 +1,12 @@
 """PyWebFlx CLI — install extension and check connection.
 
 Commands:
-    pywebflx install-extension  — Install Chrome extension automatically (Windows registry)
+    pywebflx install-extension  — Install Chrome extension (copies to clipboard + opens Chrome)
     pywebflx check              — Verify extension is connected
+    pywebflx uninstall-extension — Remove extension
 
 Example:
+    $ pip install pywebflx
     $ pywebflx install-extension
     $ pywebflx check
 """
@@ -15,9 +17,6 @@ import asyncio
 import subprocess
 import sys
 from pathlib import Path
-
-if sys.platform == "win32":
-    import winreg
 
 import click
 
@@ -37,42 +36,40 @@ def _get_extension_dir() -> Path:
     return pkg_ext
 
 
-def _get_extension_id(ext_dir: Path) -> str:
-    """Generate a stable extension ID from the path (for registry install)."""
-    import hashlib
-    # Chrome uses first 32 chars of hex(sha256(path)) mapped to a-p
-    path_bytes = str(ext_dir).encode("utf-8")
-    digest = hashlib.sha256(path_bytes).hexdigest()[:32]
-    return "".join(chr(ord("a") + int(c, 16)) for c in digest)
-
-
-def _install_registry(ext_dir: Path) -> bool:
-    """Install extension via Windows Registry (Developer mode required)."""
-    ext_id = _get_extension_id(ext_dir)
-    ext_path = str(ext_dir)
-
+def _copy_to_clipboard(text: str) -> bool:
+    """Copy text to clipboard (Windows/Mac/Linux)."""
     try:
-        # Write to HKCU (no admin needed)
-        # Chrome reads extensions from this registry path
-        reg_path = r"SOFTWARE\Google\Chrome\Extensions\\" + ext_id
-        key = winreg.CreateKeyEx(winreg.HKEY_CURRENT_USER, reg_path, 0, winreg.KEY_SET_VALUE)
-        winreg.SetValueEx(key, "path", 0, winreg.REG_SZ, ext_path)
-        winreg.SetValueEx(key, "version", 0, winreg.REG_SZ, "1.0.0")
-        winreg.CloseKey(key)
-        return True
-    except Exception as e:
-        click.echo(f"  Registry write failed: {e}")
+        if sys.platform == "win32":
+            process = subprocess.Popen(
+                ["clip"], stdin=subprocess.PIPE, shell=True,
+            )
+            process.communicate(text.encode("utf-16le"))
+            return True
+        elif sys.platform == "darwin":
+            process = subprocess.Popen(
+                ["pbcopy"], stdin=subprocess.PIPE,
+            )
+            process.communicate(text.encode("utf-8"))
+            return True
+        else:
+            process = subprocess.Popen(
+                ["xclip", "-selection", "clipboard"], stdin=subprocess.PIPE,
+            )
+            process.communicate(text.encode("utf-8"))
+            return True
+    except Exception:
         return False
 
 
-def _uninstall_registry(ext_dir: Path) -> bool:
-    """Remove extension registry entry."""
-    ext_id = _get_extension_id(ext_dir)
+def _open_chrome_extensions():
+    """Open chrome://extensions in the browser."""
     try:
-        reg_path = r"SOFTWARE\Google\Chrome\Extensions\\" + ext_id
-        winreg.DeleteKey(winreg.HKEY_CURRENT_USER, reg_path)
-        return True
-    except FileNotFoundError:
+        if sys.platform == "win32":
+            subprocess.Popen(["start", "chrome", "chrome://extensions"], shell=True)
+        elif sys.platform == "darwin":
+            subprocess.Popen(["open", "-a", "Google Chrome", "chrome://extensions"])
+        else:
+            subprocess.Popen(["google-chrome", "chrome://extensions"])
         return True
     except Exception:
         return False
@@ -86,98 +83,76 @@ def main():
 
 
 @main.command("install-extension")
-@click.option("--manual", is_flag=True, help="Show manual installation steps instead")
-def install_extension(manual: bool):
-    """Install the PyWebFlx Chrome extension."""
+def install_extension():
+    """Install the PyWebFlx Chrome extension in Chrome."""
     ext_dir = _get_extension_dir()
 
-    click.echo("=" * 60)
-    click.echo("  PyWebFlx — Chrome Extension Installation")
-    click.echo("=" * 60)
+    click.echo()
+    click.echo("  PyWebFlx — Instalacao da Extensao Chrome")
+    click.echo("  " + "-" * 45)
     click.echo()
 
     if not ext_dir.exists():
-        click.echo(f"Extension NOT found at: {ext_dir}")
-        click.echo("Please reinstall pywebflx or check your installation.")
+        click.echo("  [ERRO] Extensao nao encontrada.")
+        click.echo("  Reinstale com: pip install pywebflx")
         return
 
-    click.echo(f"Extension found at: {ext_dir}")
-    click.echo()
+    # Copy path to clipboard
+    ext_path = str(ext_dir)
+    copied = _copy_to_clipboard(ext_path)
 
-    if manual or sys.platform != "win32":
-        _show_manual_steps(ext_dir)
-        return
-
-    # Windows automatic install via registry
-    click.echo("Installing via Windows Registry...")
-    click.echo()
-
-    if _install_registry(ext_dir):
-        click.echo("  Registry entry created successfully!")
+    if copied:
+        click.echo("  [1/3] Caminho da extensao copiado para a area de transferencia!")
         click.echo()
-        click.echo("Next steps:")
-        click.echo("  1. Open Chrome and go to: chrome://extensions")
-        click.echo("  2. Enable 'Developer mode' (toggle in top-right)")
-        click.echo("  3. The extension 'PyWebFlx Bridge' should appear automatically")
-        click.echo("  4. If not, click 'Load unpacked' and select:")
-        click.echo(f"     {ext_dir}")
-        click.echo()
-
-        try:
-            subprocess.Popen(
-                ["start", "chrome", "chrome://extensions"],
-                shell=True,
-            )
-            click.echo("Opening chrome://extensions...")
-        except Exception:
-            pass
     else:
-        click.echo("  Automatic install failed. Falling back to manual steps:")
+        click.echo(f"  [1/3] Copie este caminho:")
+        click.echo(f"        {ext_path}")
         click.echo()
-        _show_manual_steps(ext_dir)
+
+    click.echo("  [2/3] O Chrome vai abrir em chrome://extensions")
+    click.echo("        -> Ative o 'Modo do desenvolvedor' (canto superior direito)")
+    click.echo("        -> Clique em 'Carregar sem compactacao'")
+    click.echo("        -> Cole o caminho (Ctrl+V) na barra de endereco e confirme")
+    click.echo()
+
+    # Open Chrome
+    opened = _open_chrome_extensions()
+    if not opened:
+        click.echo("        Nao foi possivel abrir o Chrome automaticamente.")
+        click.echo("        Abra manualmente: chrome://extensions")
+        click.echo()
+
+    click.echo("  [3/3] Apos instalar, verifique com:")
+    click.echo("        pywebflx check")
+    click.echo()
+
+    if copied:
+        click.echo(f"  Caminho: {ext_path}")
+        click.echo("  (ja esta na area de transferencia)")
+    else:
+        click.echo(f"  Caminho: {ext_path}")
 
     click.echo()
-    click.echo("After installing, run 'pywebflx check' to verify the connection.")
 
 
 @main.command("uninstall-extension")
 def uninstall_extension():
-    """Remove the PyWebFlx Chrome extension registry entry."""
-    ext_dir = _get_extension_dir()
-
-    if sys.platform == "win32":
-        if _uninstall_registry(ext_dir):
-            click.echo("Extension registry entry removed.")
-            click.echo("You may also need to remove it from chrome://extensions manually.")
-        else:
-            click.echo("Could not remove registry entry.")
-    else:
-        click.echo("Remove the extension from chrome://extensions manually.")
-
-
-def _show_manual_steps(ext_dir: Path):
-    """Show manual installation instructions."""
-    click.echo("Follow these steps to install:")
+    """Remove the PyWebFlx Chrome extension."""
     click.echo()
-    click.echo("  1. Open Chrome and go to: chrome://extensions")
-    click.echo("  2. Enable 'Developer mode' (toggle in top-right corner)")
-    click.echo("  3. Click 'Load unpacked'")
-    click.echo(f"  4. Select this folder: {ext_dir}")
-    click.echo("  5. The extension 'PyWebFlx Bridge' should appear")
+    click.echo("  Para remover a extensao:")
+    click.echo("  1. Abra chrome://extensions")
+    click.echo("  2. Encontre 'PyWebFlx Bridge'")
+    click.echo("  3. Clique em 'Remover'")
+    click.echo()
 
-    try:
-        if sys.platform == "win32":
-            subprocess.Popen(["start", "chrome", "chrome://extensions"], shell=True)
-        elif sys.platform == "darwin":
-            subprocess.Popen(["open", "-a", "Google Chrome", "chrome://extensions"])
-    except Exception:
-        pass
+    _open_chrome_extensions()
 
 
 @main.command("check")
 def check():
     """Check if the Chrome extension is connected."""
-    click.echo("Checking PyWebFlx extension connection...")
+    click.echo()
+    click.echo("  Verificando conexao com a extensao...")
     click.echo()
 
     async def _check():
@@ -188,20 +163,33 @@ def check():
         await server.start()
         try:
             await server.wait_for_connection(timeout=5)
-            click.echo("Extension is CONNECTED!")
-            click.echo("PyWebFlx is ready to use.")
+            click.echo("  [OK] Extensao CONECTADA!")
+            click.echo("  PyWebFlx esta pronto para uso.")
             return True
         except ExtensionNotConnectedError:
-            click.echo("Extension is NOT connected.")
+            click.echo("  [ERRO] Extensao NAO conectada.")
             click.echo()
-            click.echo("Make sure:")
-            click.echo("  1. Chrome is open")
-            click.echo("  2. PyWebFlx Bridge extension is installed and enabled")
-            click.echo("  3. No other pywebflx instance is running on port 9819")
+            click.echo("  Verifique:")
+            click.echo("  1. Chrome esta aberto?")
+            click.echo("  2. Extensao 'PyWebFlx Bridge' esta instalada e ativada?")
+            click.echo("  3. Nenhum outro script pywebflx esta rodando na porta 9819?")
             return False
         finally:
             await server.stop()
 
     connected = asyncio.run(_check())
+    click.echo()
     if not connected:
+        sys.exit(1)
+
+
+@main.command("extension-path")
+def extension_path():
+    """Print the extension directory path (useful for scripts)."""
+    ext_dir = _get_extension_dir()
+    if ext_dir.exists():
+        click.echo(str(ext_dir))
+        _copy_to_clipboard(str(ext_dir))
+    else:
+        click.echo("Extension not found", err=True)
         sys.exit(1)

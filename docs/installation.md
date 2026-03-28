@@ -16,21 +16,21 @@ pip install -e ".[dev]"
 
 ## 2. Install the Chrome extension
 
-### Via CLI
-
 ```bash
 pywebflx install-extension
 ```
 
-The command shows the path to the `extension/` folder and opens `chrome://extensions`.
+This command will:
 
-### Manual
+1. **Copy** the extension path to your clipboard automatically
+2. **Open** Chrome at `chrome://extensions`
+3. You just need to:
+    - Enable **Developer mode** (toggle in the top-right corner)
+    - Click **Load unpacked**
+    - Paste the path (**Ctrl+V**) in the address bar and confirm
 
-1. Open `chrome://extensions` in Chrome
-2. Enable **Developer mode** (top right corner)
-3. Click **Load unpacked**
-4. Select the `extension/` folder from the project
-5. The **PyWebFlx Bridge** extension should appear
+!!! tip "Enterprise setup (multiple machines)"
+    The same steps apply for each machine. After `pip install pywebflx`, the extension is bundled inside the package — no additional downloads needed.
 
 ## 3. Verify
 
@@ -39,6 +39,16 @@ pywebflx check
 ```
 
 If you see "Extension is CONNECTED!", everything is ready.
+
+## Other CLI commands
+
+| Command | Description |
+|---------|-------------|
+| `pywebflx install-extension` | Install Chrome extension (copies path + opens Chrome) |
+| `pywebflx check` | Verify extension connection |
+| `pywebflx uninstall-extension` | Instructions to remove the extension |
+| `pywebflx extension-path` | Print extension path (useful for scripts) |
+| `pywebflx --version` | Show installed version |
 
 ## Requirements
 

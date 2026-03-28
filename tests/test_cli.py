@@ -25,4 +25,4 @@ class TestCLI:
         result = runner.invoke(main, ["check"])
         # Should show that extension is not connected
         assert result.exit_code == 0 or result.exit_code == 1
-        assert "extension" in result.output.lower() or "connect" in result.output.lower()
+        assert "extensao" in result.output.lower() or "extension" in result.output.lower()
