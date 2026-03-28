@@ -1,4 +1,4 @@
-# Instalacao
+# Instalação
 
 ## 1. Instalar a biblioteca
 
@@ -14,7 +14,7 @@ cd pywebflx
 pip install -e ".[dev]"
 ```
 
-## 2. Instalar a extensao do Chrome
+## 2. Instalar a extensão do Chrome
 
 ### Via CLI
 
@@ -28,9 +28,9 @@ O comando exibe o caminho da pasta `extension/` e abre `chrome://extensions`.
 
 1. Abra `chrome://extensions` no Chrome
 2. Ative o **Modo do desenvolvedor** (canto superior direito)
-3. Clique em **Carregar sem compactacao**
+3. Clique em **Carregar sem compactação**
 4. Selecione a pasta `extension/` do projeto
-5. A extensao **PyWebFlx Bridge** deve aparecer
+5. A extensão **PyWebFlx Bridge** deve aparecer
 
 ## 3. Verificar
 
@@ -38,18 +38,18 @@ O comando exibe o caminho da pasta `extension/` e abre `chrome://extensions`.
 pywebflx check
 ```
 
-Se aparecer "Extension is CONNECTED!", tudo esta pronto.
+Se aparecer "Extension is CONNECTED!", tudo está pronto.
 
 ## Requisitos
 
 - Python 3.10+
 - Google Chrome
-- Extensao PyWebFlx Bridge instalada
+- Extensão PyWebFlx Bridge instalada
 
-## Dependencias
+## Dependências
 
 | Pacote | Uso |
 |--------|-----|
-| `websockets` | Comunicacao Python <-> Extensao |
+| `websockets` | Comunicação Python <-> Extensão |
 | `loguru` | Logging estruturado |
 | `click` | CLI (install-extension, check) |

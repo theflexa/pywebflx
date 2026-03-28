@@ -1,12 +1,12 @@
 # PyWebFlx
 
-**Automacao de navegador para paginas Chrome ja abertas.**
+**Automação de navegador para páginas Chrome já abertas.**
 
-O PyWebFlx e uma biblioteca Python que se conecta a paginas ja abertas no Chrome por meio de uma extensao (Manifest V3) + WebSocket. Diferente do Selenium, ele nao cria uma instancia sandbox -- voce automatiza o navegador real do usuario.
+O PyWebFlx é uma biblioteca Python que se conecta a páginas já abertas no Chrome por meio de uma extensão (Manifest V3) + WebSocket. Diferente do Selenium, ele não cria uma instância sandbox -- você automatiza o navegador real do usuário.
 
 ---
 
-## Inicio Rapido
+## Início Rápido
 
 ```python
 import asyncio
@@ -14,7 +14,7 @@ from pywebflx import use_browser
 
 async def main():
     async with use_browser(url="https://quotes.toscrape.com/") as browser:
-        # Ver estrutura da pagina
+        # Ver estrutura da página
         structure = await browser.inspect(depth=5)
         print(structure)
 
@@ -34,17 +34,17 @@ asyncio.run(main())
 
 | | PyWebFlx | Selenium | Playwright |
 |---|---|---|---|
-| Usa Chrome ja aberto | :white_check_mark: | :x: | :x: |
-| Reutiliza sessao/login | :white_check_mark: | :x: | :x: |
+| Usa Chrome já aberto | :white_check_mark: | :x: | :x: |
+| Reutiliza sessão/login | :white_check_mark: | :x: | :x: |
 | API async/await | :white_check_mark: | :x: | :white_check_mark: |
-| Sem WebDriver/binario | :white_check_mark: | :x: | :x: |
+| Sem WebDriver/binário | :white_check_mark: | :x: | :x: |
 | Inspect otimizado para IA | :white_check_mark: | :x: | :x: |
-| Setup | Extensao Chrome | WebDriver + config | `playwright install` |
+| Setup | Extensão Chrome | WebDriver + config | `playwright install` |
 
 ## Como funciona
 
 ```
-Script Python                   Extensao Chrome
+Script Python                   Extensão Chrome
       |                                |
       |  1. Inicia WebSocket :9819     |
       |<------------------------------>|  2. Conecta automaticamente
@@ -59,10 +59,10 @@ Script Python                   Extensao Chrome
 
 ## Principais funcionalidades
 
-- **`use_browser()`** -- Conecta a abas por URL ou titulo, abre se nao encontrar
-- **`click()`, `type_into()`** -- Interacao com elementos (CSS, XPath, texto)
-- **`get_text()`, `extract_data()`** -- Extracao de dados estruturados
-- **`inspect()`** -- Visao resumida do DOM, otimizada para IAs
-- **`extract_table()`** -- Extracao de tabelas HTML com paginacao
-- **`wait_element()`, `element_exists()`** -- Sincronizacao
+- **`use_browser()`** -- Conecta a abas por URL ou título, abre se não encontrar
+- **`click()`, `type_into()`** -- Interação com elementos (CSS, XPath, texto)
+- **`get_text()`, `extract_data()`** -- Extração de dados estruturados
+- **`inspect()`** -- Visão resumida do DOM, otimizada para IAs
+- **`extract_table()`** -- Extração de tabelas HTML com paginação
+- **`wait_element()`, `element_exists()`** -- Sincronização
 - **`execute_js()`** -- JavaScript customizado

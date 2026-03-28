@@ -54,6 +54,7 @@ plugins:
             Examples: Exemplos
             Web Scraping: Web Scraping
             RPA Automation: Automação RPA
+            use_browser: Acessar Browser
 
 markdown_extensions:
   - pymdownx.highlight:

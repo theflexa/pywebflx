@@ -1,12 +1,12 @@
-# Extracao de Dados
+# Extração de Dados
 
-Metodos para extrair texto, atributos e dados estruturados da pagina.
+Métodos para extrair texto, atributos e dados estruturados da página.
 
 ---
 
 ## get_text
 
-Retorna o texto visivel de um elemento.
+Retorna o texto visível de um elemento.
 
 ```python
 text = await browser.get_text(selector)
@@ -18,7 +18,7 @@ text = await browser.get_text(selector)
 saldo = await browser.get_text(".account-balance")
 # "R$ 1.200,00"
 
-titulo = await browser.get_text("h1")
+título = await browser.get_text("h1")
 # "Painel"
 ```
 
@@ -46,7 +46,7 @@ css_class = await browser.get_attribute("#btn", attribute="class")
 
 ## get_full_text
 
-Retorna todo o texto visivel da pagina.
+Retorna todo o texto visível da página.
 
 ```python
 text = await browser.get_full_text()
@@ -66,15 +66,15 @@ data = await browser.extract_data(
 )
 ```
 
-### Parametros
+### Parâmetros
 
-| Parametro | Tipo | Padrao | Descricao |
+| Parâmetro | Tipo | Padrão | Descrição |
 |-----------|------|--------|-----------|
 | `container` | `str` | `""` | Seletor do container pai |
 | `row` | `str` | `""` | Seletor de cada item repetido |
 | `columns` | `dict` | `None` | Mapeamento nome -> seletor interno |
-| `next_page` | `str` | `None` | Seletor do botao "Proxima pagina" |
-| `max_pages` | `int` | `100` | Maximo de paginas a extrair |
+| `next_page` | `str` | `None` | Seletor do botão "Próxima página" |
+| `max_pages` | `int` | `100` | Máximo de páginas a extrair |
 
 ### Retorno
 
@@ -82,12 +82,12 @@ Lista de dicts:
 
 ```python
 [
-    {"text": "Citacao 1...", "author": "Einstein"},
-    {"text": "Citacao 2...", "author": "Tolkien"},
+    {"text": "Citação 1...", "author": "Einstein"},
+    {"text": "Citação 2...", "author": "Tolkien"},
 ]
 ```
 
-### Exemplo -- Citacoes
+### Exemplo -- Citações
 
 ```python
 quotes = await browser.extract_data(
@@ -109,7 +109,7 @@ produtos = await browser.extract_data(
     row=".product-card",
     columns={
         "Nome": ".card-title",
-        "Preco": ".card-price",
+        "Preço": ".card-price",
         "Estoque": ".card-stock span",
     },
     next_page="#btn-next",
@@ -122,7 +122,7 @@ produtos = await browser.extract_data(
 Use `inspect()` para mapear a estrutura:
 
 ```python
-# 1. Ver a pagina geral
+# 1. Ver a página geral
 await browser.inspect(depth=5)
 # Mostra: <div.quote> x 10 items
 
@@ -141,25 +141,25 @@ data = await browser.extract_data(
 
 ## extract_table
 
-Extrai dados de uma `<table>` HTML. Usa os cabecalhos como chaves.
+Extrai dados de uma `<table>` HTML. Usa os cabeçalhos como chaves.
 
 ```python
 data = await browser.extract_table(selector)
 ```
 
-### Parametros
+### Parâmetros
 
-| Parametro | Tipo | Padrao | Descricao |
+| Parâmetro | Tipo | Padrão | Descrição |
 |-----------|------|--------|-----------|
 | `selector` | `str` | -- | Seletor da `<table>` |
-| `next_page` | `str` | `None` | Seletor do botao proxima pagina |
-| `max_pages` | `int` | `100` | Maximo de paginas |
+| `next_page` | `str` | `None` | Seletor do botão próxima página |
+| `max_pages` | `int` | `100` | Máximo de páginas |
 
 ### Retorno
 
 ```python
 [
-    {"Nome": "Joao", "CPF": "123.456.789-00", "Saldo": "1.200,00"},
+    {"Nome": "João", "CPF": "123.456.789-00", "Saldo": "1.200,00"},
     {"Nome": "Maria", "CPF": "987.654.321-00", "Saldo": "3.500,00"},
 ]
 ```
@@ -170,7 +170,7 @@ data = await browser.extract_table(selector)
 # Tabela simples
 clientes = await browser.extract_table("#clients-table")
 
-# Com paginacao
+# Com paginação
 clientes = await browser.extract_table(
     "#clients-table",
     next_page="#btn-next",

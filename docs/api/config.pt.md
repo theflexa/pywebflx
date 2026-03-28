@@ -1,4 +1,4 @@
-# Configuracao
+# Configuração
 
 `PyWebFlxConfig` controla timeouts, retentativas, porta WebSocket e logging.
 
@@ -17,29 +17,29 @@ config = PyWebFlxConfig(
 )
 ```
 
-## Parametros
+## Parâmetros
 
-| Parametro | Tipo | Padrao | Descricao |
+| Parâmetro | Tipo | Padrão | Descrição |
 |-----------|------|--------|-----------|
-| `default_timeout` | `float` | `10` | Timeout padrao em segundos |
-| `delay_between_actions` | `float` | `0.3` | Atraso entre acoes consecutivas |
-| `retry_count` | `int` | `0` | Tentativas de retentativa padrao em caso de falha |
+| `default_timeout` | `float` | `10` | Timeout padrão em segundos |
+| `delay_between_actions` | `float` | `0.3` | Atraso entre ações consecutivas |
+| `retry_count` | `int` | `0` | Tentativas de retentativa padrão em caso de falha |
 | `on_error` | `str` | `"raise"` | `"raise"` ou `"continue"` |
 | `ws_port` | `int` | `9819` | Porta do servidor WebSocket |
-| `log_level` | `str` | `"INFO"` | Nivel de log |
+| `log_level` | `str` | `"INFO"` | Nível de log |
 
 ## Prioridade
 
-A resolucao de parametros segue esta ordem:
+A resolução de parâmetros segue esta ordem:
 
 ```
-parametro da acao  >  config do use_browser  >  padroes globais
+parâmetro da ação  >  config do use_browser  >  padrões globais
 ```
 
 ```python
-# Global: timeout = 10 (padrao)
+# Global: timeout = 10 (padrão)
 # Config: timeout = 20
-# Acao: timeout = 60 (vence)
+# Ação: timeout = 60 (vence)
 
 config = PyWebFlxConfig(default_timeout=20)
 
@@ -48,7 +48,7 @@ async with use_browser(url="https://example.com", config=config) as browser:
     await browser.click("#btn2")             # usa 20
 ```
 
-## Padroes globais
+## Padrões globais
 
 ```python
 # Afeta todas as novas instancias
@@ -63,18 +63,18 @@ PyWebFlxConfig.reset_defaults()
 ```python
 from pywebflx import configure_logging
 
-configure_logging(level="INFO")                        # console (padrao)
+configure_logging(level="INFO")                        # console (padrão)
 configure_logging(level="DEBUG", sink="automation.log") # arquivo
 configure_logging(level="DISABLED")                    # silencioso
 ```
 
-### Niveis
+### Níveis
 
-| Nivel | O que registra |
+| Nível | O que registra |
 |-------|----------------|
-| `ERROR` | Falha final (apos todas as retentativas) |
-| `WARN` | Retentativa, reconexao, fallback |
-| `INFO` | Acao executada com sucesso |
+| `ERROR` | Falha final (após todas as retentativas) |
+| `WARN` | Retentativa, reconexão, fallback |
+| `INFO` | Ação executada com sucesso |
 | `DEBUG` | Detalhes internos (seletor, payload JSON) |
 | `TRACE` | Tudo (bytes WebSocket, DOM parcial) |
 | `DISABLED` | Nada |
@@ -87,9 +87,9 @@ configure_logging(level="DISABLED")                    # silencioso
 2026-03-28 14:32:08.001 [ERROR] [browser.extract_table] #table -> tab:42 -> falhou: TabClosedError
 ```
 
-### Override por acao
+### Override por ação
 
 ```python
 await browser.click("#critical-btn", log_level="DEBUG")   # mais detalhes
-await browser.click(row_selector, log_level="WARN")       # menos ruido em loops
+await browser.click(row_selector, log_level="WARN")       # menos ruído em loops
 ```

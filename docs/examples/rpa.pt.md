@@ -1,12 +1,12 @@
-# Exemplo: Automacao RPA
+# Exemplo: Automação RPA
 
-Exemplo de automacao de portal web usando PyWebFlx.
+Exemplo de automação de portal web usando PyWebFlx.
 
-## Cenario
+## Cenário
 
 Automatizar login em um portal, extrair dados de uma tabela e salvar.
 
-## Codigo completo
+## Código completo
 
 ```python
 import asyncio
@@ -22,7 +22,7 @@ config = PyWebFlxConfig(
 )
 
 async def main():
-    # 1. Conectar ao portal (abre se nao estiver aberto)
+    # 1. Conectar ao portal (abre se não estiver aberto)
     async with use_browser(
         url="https://portal.example.com",
         config=config,
@@ -37,8 +37,8 @@ async def main():
         await browser.wait_element(".dashboard", timeout=10)
         await browser.wait_element_vanish("#spinner")
 
-        # 4. Navegar para relatorios
-        await browser.click(text="Relatorios", tag="a")
+        # 4. Navegar para relatórios
+        await browser.click(text="Relatórios", tag="a")
         await browser.wait_element("#clients-table")
 
         # 5. Extrair tabela
@@ -56,7 +56,7 @@ async def main():
 asyncio.run(main())
 ```
 
-## Fluxo com multiplas abas
+## Fluxo com múltiplas abas
 
 ```python
 async def transferir_dados():
@@ -67,7 +67,7 @@ async def transferir_dados():
 
             # Colar no email
             await email.click("#new-email")
-            await email.type_into("#subject", text="Saldo diario")
+            await email.type_into("#subject", text="Saldo diário")
             await email.type_into("#body", text=f"Saldo: {saldo}")
             await email.click("#btn-send")
 ```
@@ -95,13 +95,13 @@ async def automacao_robusta():
             )
 
     except BrowserNotFoundError:
-        print("Portal nao esta aberto")
+        print("Portal não está aberto")
 
     except ElementTimeoutError as e:
-        print(f"Elemento {e.selector} nao apareceu em {e.timeout}s")
+        print(f"Elemento {e.selector} não apareceu em {e.timeout}s")
 
     except ElementNotFoundError as e:
-        print(f"Elemento {e.selector} nao encontrado")
+        print(f"Elemento {e.selector} não encontrado")
 ```
 
 ## Fluxo com dropdown e checkbox
@@ -109,9 +109,9 @@ async def automacao_robusta():
 ```python
 async def preencher_formulario():
     async with use_browser(url="https://portal.com/cadastro") as browser:
-        await browser.type_into("#nome", text="Joao Silva")
+        await browser.type_into("#nome", text="João Silva")
         await browser.type_into("#cpf", text="123.456.789-00")
-        await browser.select_item("#estado", "Sao Paulo", by="text")
+        await browser.select_item("#estado", "São Paulo", by="text")
         await browser.check("#aceitar-termos")
         await browser.click("#btn-cadastrar")
         await browser.wait_element(".success-msg", timeout=10)

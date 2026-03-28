@@ -1,6 +1,6 @@
 # use_browser
 
-Ponto de entrada principal do PyWebFlx. Conecta a uma aba do Chrome e retorna um `BrowserContext` com todos os metodos de automacao.
+Ponto de entrada principal do PyWebFlx. Conecta a uma aba do Chrome e retorna um `BrowserContext` com todos os métodos de automação.
 
 ## Assinatura
 
@@ -14,33 +14,33 @@ async with use_browser(
     ...
 ```
 
-## Parametros
+## Parâmetros
 
-| Parametro | Tipo | Padrao | Descricao |
+| Parâmetro | Tipo | Padrão | Descrição |
 |-----------|------|--------|-----------|
-| `url` | `str` | `None` | URL para buscar (correspondencia parcial) e/ou abrir |
-| `title` | `str` | `None` | Titulo da aba para buscar (correspondencia parcial) |
+| `url` | `str` | `None` | URL para buscar (correspondência parcial) e/ou abrir |
+| `title` | `str` | `None` | Título da aba para buscar (correspondência parcial) |
 | `open` | `str` | `"if_not_open"` | Comportamento de abertura (veja abaixo) |
-| `config` | `PyWebFlxConfig` | `None` | Configuracao personalizada |
+| `config` | `PyWebFlxConfig` | `None` | Configuração personalizada |
 
-### Parametro `open`
+### Parâmetro `open`
 
 | Valor | Comportamento |
 |-------|---------------|
-| `"if_not_open"` | Busca uma aba existente. Se nao encontrar, abre a `url`. **(padrao)** |
+| `"if_not_open"` | Busca uma aba existente. Se não encontrar, abre a `url`. **(padrão)** |
 | `"open"` | Sempre abre uma nova aba com a `url`. |
 | `"never"` | Apenas conecta a uma aba existente. Nunca abre. |
 
 ## Exemplos
 
-### Basico -- abre se nao encontrar
+### Básico -- abre se não encontrar
 
 ```python
 async with use_browser(url="https://quotes.toscrape.com/") as browser:
     await browser.click("#btn")
 ```
 
-### Buscar por titulo
+### Buscar por título
 
 ```python
 async with use_browser(title="Portal Sicoob", open="never") as browser:
@@ -54,7 +54,7 @@ async with use_browser(url="https://example.com", open="open") as browser:
     await browser.type_into("#email", text="user@email.com")
 ```
 
-### Com configuracao personalizada
+### Com configuração personalizada
 
 ```python
 from pywebflx import PyWebFlxConfig
@@ -65,7 +65,7 @@ async with use_browser(url="https://example.com", config=config) as browser:
     await browser.click("#btn", timeout=60)  # 60 sobrescreve 30
 ```
 
-### Multiplas abas
+### Múltiplas abas
 
 ```python
 async with use_browser(url="https://portal.com") as tab1:
@@ -74,9 +74,9 @@ async with use_browser(url="https://portal.com") as tab1:
         await tab2.type_into("#body", text=data)
 ```
 
-## Excecoes
+## Exceções
 
-| Excecao | Quando |
+| Exceção | Quando |
 |---------|--------|
-| `BrowserNotFoundError` | Aba nao encontrada e `open="never"` |
-| `ExtensionNotConnectedError` | Extensao do Chrome nao esta conectada |
+| `BrowserNotFoundError` | Aba não encontrada e `open="never"` |
+| `ExtensionNotConnectedError` | Extensão do Chrome não está conectada |

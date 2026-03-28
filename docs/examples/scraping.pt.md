@@ -4,11 +4,11 @@ Scraping completo do site [quotes.toscrape.com](https://quotes.toscrape.com/) us
 
 ## O fluxo
 
-1. **`inspect()`** -- entender a pagina
+1. **`inspect()`** -- entender a página
 2. **`inspect(".quote")`** -- ver a estrutura interna
 3. **`extract_data()`** -- extrair usando os seletores descobertos
 
-## Codigo completo
+## Código completo
 
 ```python
 import asyncio
@@ -48,12 +48,12 @@ async def main():
             print(f"{i}. {q['author']}: {q['text'][:60]}...")
             print(f"   Tags: {', '.join(tags)}")
 
-        print(f"\nTotal: {len(quotes)} citacoes")
+        print(f"\nTotal: {len(quotes)} citações")
 
 asyncio.run(main())
 ```
 
-## Saida
+## Saída
 
 ```
 1. George R.R. Martin: "A reader lives a thousand lives before he dies...
@@ -63,10 +63,10 @@ asyncio.run(main())
 3. Marilyn Monroe: "You believe lies so you eventually learn to trust...
    Tags: lies, lying, trust
 ...
-Total: 10 citacoes
+Total: 10 citações
 ```
 
-## Com paginacao
+## Com paginação
 
 ```python
 async def scrape_todas_paginas():
@@ -75,7 +75,7 @@ async def scrape_todas_paginas():
         pagina = 1
 
         while True:
-            print(f"Pagina {pagina}...")
+            print(f"Página {pagina}...")
 
             quotes = await browser.extract_data(
                 container="body",
@@ -84,7 +84,7 @@ async def scrape_todas_paginas():
             )
             todas_citacoes.extend(quotes)
 
-            # Verificar se ha proxima pagina
+            # Verificar se há próxima página
             if not await browser.element_exists("li.next a"):
                 break
 
@@ -92,7 +92,7 @@ async def scrape_todas_paginas():
             await asyncio.sleep(1)
             pagina += 1
 
-        print(f"Total: {len(todas_citacoes)} citacoes em {pagina} paginas")
+        print(f"Total: {len(todas_citacoes)} citações em {pagina} páginas")
         return todas_citacoes
 ```
 

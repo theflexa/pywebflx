@@ -1,6 +1,6 @@
-# Navegacao
+# Navegação
 
-Metodos para navegar entre paginas, atualizar e fechar abas.
+Métodos para navegar entre páginas, atualizar e fechar abas.
 
 ---
 
@@ -16,7 +16,7 @@ await browser.navigate_to("https://portal.example.com/dashboard")
 
 ## go_back
 
-Volta no historico do navegador.
+Volta no histórico do navegador.
 
 ```python
 await browser.go_back()
@@ -26,7 +26,7 @@ await browser.go_back()
 
 ## go_forward
 
-Avanca no historico do navegador.
+Avança no histórico do navegador.
 
 ```python
 await browser.go_forward()
@@ -36,7 +36,7 @@ await browser.go_forward()
 
 ## refresh
 
-Recarrega a pagina atual.
+Recarrega a página atual.
 
 ```python
 await browser.refresh()

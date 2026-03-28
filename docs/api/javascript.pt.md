@@ -1,12 +1,12 @@
 # JavaScript
 
-Metodos para executar JavaScript customizado na pagina.
+Métodos para executar JavaScript customizado na página.
 
 ---
 
 ## execute_js
 
-Executa codigo JavaScript e retorna o resultado.
+Executa código JavaScript e retorna o resultado.
 
 ```python
 result = await browser.execute_js("return document.title")
@@ -15,18 +15,18 @@ result = await browser.execute_js("return document.title")
 ### Exemplos
 
 ```python
-# Titulo da pagina
+# Título da página
 title = await browser.execute_js("return document.title")
 
 # URL atual
 url = await browser.execute_js("return window.location.href")
 
-# Rolar ate o final
+# Rolar até o final
 await browser.execute_js("return window.scrollTo(0, document.body.scrollHeight)")
 ```
 
-!!! note "Limitacao"
-    `execute_js` suporta expressoes simples com `return`. Para logica complexa, use `extract_data` ou manipule via `click`/`type_into`.
+!!! note "Limitação"
+    `execute_js` suporta expressões simples com `return`. Para lógica complexa, use `extract_data` ou manipule via `click`/`type_into`.
 
 ---
 
@@ -51,4 +51,4 @@ async with browser.switch_to("#iframe-content") as frame:
 ```
 
 !!! warning "Em desenvolvimento"
-    O suporte a iframes esta planejado para a v2. Atualmente `switch_to` retorna o mesmo contexto.
+    O suporte a iframes está planejado para a v2. Atualmente `switch_to` retorna o mesmo contexto.

@@ -1,8 +1,8 @@
 # inspect
 
-Retorna uma visao resumida da estrutura do DOM, otimizada para consumo por IA e depuracao rapida.
+Retorna uma visão resumida da estrutura do DOM, otimizada para consumo por IA e depuração rápida.
 
-Usa **~95% menos tokens** que o HTML bruto, preservando informacoes uteis.
+Usa **~95% menos tokens** que o HTML bruto, preservando informações úteis.
 
 ## Assinatura
 
@@ -10,15 +10,15 @@ Usa **~95% menos tokens** que o HTML bruto, preservando informacoes uteis.
 structure = await browser.inspect(selector="", depth=2, samples=2)
 ```
 
-## Parametros
+## Parâmetros
 
-| Parametro | Tipo | Padrao | Descricao |
+| Parâmetro | Tipo | Padrão | Descrição |
 |-----------|------|--------|-----------|
-| `selector` | `str` | `""` | Escopo (vazio = pagina inteira) |
-| `depth` | `int` | `2` | Profundidade maxima de travessia |
+| `selector` | `str` | `""` | Escopo (vazio = página inteira) |
+| `depth` | `int` | `2` | Profundidade máxima de travessia |
 | `samples` | `int` | `2` | Amostras de dados em listas/tabelas |
 
-## Exemplo de saida
+## Exemplo de saída
 
 ```
 <body>
@@ -28,19 +28,19 @@ structure = await browser.inspect(selector="", depth=2, samples=2)
     <a.logo> "Portal Sicoob"
   <main#content>
     <form#login-form>
-      <input#username type="text" placeholder="Usuario" [required]>
+      <input#username type="text" placeholder="Usuário" [required]>
       <input#password type="password" placeholder="Senha" [required]>
-      <select#branch> 3 opcoes: ["0001 - Centro", "0032 - Belem"]
+      <select#branch> 3 opções: ["0001 - Centro", "0032 - Belém"]
       <button#btn-login type="submit"> "Entrar"
     <div.notices>
       <table#notices-table> 3 cols x 12 linhas
-        cabecalhos: ["Data", "Tipo", "Mensagem"]
-        amostra[0]: ["28/03", "Info", "Manutencao programada"]
+        cabeçalhos: ["Data", "Tipo", "Mensagem"]
+        amostra[0]: ["28/03", "Info", "Manutenção programada"]
 ```
 
 ## Fluxo de uso
 
-### 1. Inspect geral -- entender a pagina
+### 1. Inspect geral -- entender a página
 
 ```python
 structure = await browser.inspect(depth=5, samples=2)
@@ -89,15 +89,15 @@ quotes = await browser.extract_data(
 | Inputs | `<input#email type="text" placeholder="Email" [required]>` |
 | Links | `<a.logo href="/home">` |
 | Texto | `<button> "Entrar"` |
-| Tabelas | `<table> 3 cols x 12 linhas` + cabecalhos + amostras |
-| Selects | `<select> 5 opcoes: ["Opt1", "Opt2", ...]` |
+| Tabelas | `<table> 3 cols x 12 linhas` + cabeçalhos + amostras |
+| Selects | `<select> 5 opções: ["Opt1", "Opt2", ...]` |
 | Listas | `<div.card> x 20 items` + amostras |
 
 ## Quando usar
 
-| Cenario | Comando |
+| Cenário | Comando |
 |---------|---------|
-| Entender uma pagina desconhecida | `inspect(depth=5)` |
-| Encontrar seletores para automacao | `inspect(".container", depth=5)` |
-| Alimentar IA com contexto da pagina | `inspect(depth=3, samples=2)` |
-| Depuracao rapida sem DevTools | `inspect()` |
+| Entender uma página desconhecida | `inspect(depth=5)` |
+| Encontrar seletores para automação | `inspect(".container", depth=5)` |
+| Alimentar IA com contexto da página | `inspect(depth=3, samples=2)` |
+| Depuração rápida sem DevTools | `inspect()` |

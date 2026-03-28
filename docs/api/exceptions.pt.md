@@ -1,6 +1,6 @@
-# Excecoes
+# Exceções
 
-Todas as excecoes herdam de `PyWebFlxError` e possuem atributos contextuais.
+Todas as exceções herdam de `PyWebFlxError` e possuem atributos contextuais.
 
 ## Hierarquia
 
@@ -28,7 +28,7 @@ PyWebFlxError
 
 ## Atributos contextuais
 
-Cada excecao carrega informacoes relevantes para depuracao:
+Cada exceção carrega informações relevantes para depuração:
 
 ```python
 try:
@@ -40,46 +40,46 @@ except ElementNotFoundError as e:
     print(e.message)    # "Element '#nonexistent-btn' not found within 10s"
 ```
 
-## Referencia
+## Referência
 
-### Conexao
+### Conexão
 
-| Excecao | Quando | Atributos |
+| Exceção | Quando | Atributos |
 |---------|--------|-----------|
-| `ExtensionNotConnectedError` | Extensao nao conectou a tempo | `port`, `timeout` |
-| `ConnectionLostError` | WebSocket caiu durante operacao | `reason` |
+| `ExtensionNotConnectedError` | Extensão não conectou a tempo | `port`, `timeout` |
+| `ConnectionLostError` | WebSocket caiu durante operação | `reason` |
 
 ### Navegador
 
-| Excecao | Quando | Atributos |
+| Exceção | Quando | Atributos |
 |---------|--------|-----------|
 | `BrowserNotFoundError` | Nenhuma aba encontrada | `title`, `url` |
-| `TabNotFoundError` | Aba especifica nao encontrada | `title`, `url` |
-| `TabClosedError` | Aba fechou durante operacao | `tab_id` |
+| `TabNotFoundError` | Aba específica não encontrada | `title`, `url` |
+| `TabClosedError` | Aba fechou durante operação | `tab_id` |
 
 ### Elemento
 
-| Excecao | Quando | Atributos |
+| Exceção | Quando | Atributos |
 |---------|--------|-----------|
-| `ElementNotFoundError` | Seletor nao encontrou elemento | `selector`, `tab_id`, `timeout` |
-| `ElementTimeoutError` | Timeout aguardando condicao | `selector`, `tab_id`, `timeout`, `condition` |
-| `ElementNotInteractableError` | Elemento nao clicavel | `selector`, `tab_id`, `reason` |
-| `SelectorError` | Seletor invalido | `selector`, `reason` |
+| `ElementNotFoundError` | Seletor não encontrou elemento | `selector`, `tab_id`, `timeout` |
+| `ElementTimeoutError` | Timeout aguardando condição | `selector`, `tab_id`, `timeout`, `condition` |
+| `ElementNotInteractableError` | Elemento não clicável | `selector`, `tab_id`, `reason` |
+| `SelectorError` | Seletor inválido | `selector`, `reason` |
 
-### Acao
+### Ação
 
-| Excecao | Quando | Atributos |
+| Exceção | Quando | Atributos |
 |---------|--------|-----------|
 | `NavigationError` | Falha ao navegar | `url`, `reason` |
 | `InjectionError` | Falha ao injetar script | `tab_id`, `reason` |
 | `DownloadError` | Download falhou/timeout | `timeout`, `reason` |
 | `ScreenshotError` | Screenshot falhou | `path`, `reason` |
 
-### Configuracao
+### Configuração
 
-| Excecao | Quando | Atributos |
+| Exceção | Quando | Atributos |
 |---------|--------|-----------|
-| `ConfigError` | Valor de configuracao invalido | `param`, `value`, `reason` |
+| `ConfigError` | Valor de configuração inválido | `param`, `value`, `reason` |
 
 ## Exemplo completo
 
@@ -91,7 +91,7 @@ try:
         try:
             await browser.click("#btn-login", timeout=5)
         except ElementNotFoundError as e:
-            print(f"Botao {e.selector} nao encontrado na aba {e.tab_id}")
+            print(f"Botão {e.selector} não encontrado na aba {e.tab_id}")
 except BrowserNotFoundError as e:
     print(f"Nenhuma aba com url={e.url}")
 ```
