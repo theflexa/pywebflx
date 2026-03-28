@@ -142,7 +142,7 @@ async function handleCommand(raw) {
         result = null;
         break;
       case "execute_js":
-        result = await executeInTab(tabId, params.code, true);
+        result = await executeDomAction(tabId, action, params);
         break;
       default:
         // All DOM actions: click, type_into, get_text, inspect, etc.
@@ -190,11 +190,22 @@ async function executeInTab(tabId, codeOrFunc, isRawCode = false) {
   let results;
 
   if (isRawCode) {
-    // Execute raw JS code string
+    // Execute raw JS code string via domActionHandler for consistent behavior
     results = await chrome.scripting.executeScript({
       target: { tabId },
       func: (code) => {
-        return new Function(code)();
+        try {
+          // Wrap in function to support "return" statements
+          const fn = new Function(code);
+          return fn();
+        } catch (e) {
+          // Fallback for expressions without "return"
+          try {
+            return eval(code);
+          } catch (e2) {
+            return { __error: true, name: e2.name, message: e2.message };
+          }
+        }
       },
       args: [codeOrFunc],
     });
@@ -423,6 +434,50 @@ function domActionHandler(action, params) {
         return extractTable(params.selector);
       }
 
+      case "execute_js": {
+        // Handle common JS operations without eval
+        const code = params.code.trim();
+        // "return document.title" -> document.title
+        const expr = code.startsWith("return ") ? code.slice(7) : code;
+
+        // Support common property access patterns
+        const parts = expr.split(".");
+        let result = window;
+        for (const part of parts) {
+          if (result == null) return null;
+          // Handle method calls like querySelectorAll('.quote').length
+          const methodMatch = part.match(/^(\w+)\(([^)]*)\)$/);
+          if (methodMatch) {
+            const [, method, argsStr] = methodMatch;
+            const args = argsStr ? [argsStr.replace(/^['"]|['"]$/g, "")] : [];
+            result = result[method](...args);
+          } else {
+            result = result[part];
+          }
+        }
+        // Convert NodeList/HTMLCollection to serializable
+        if (result instanceof NodeList || result instanceof HTMLCollection) {
+          return Array.from(result).length;
+        }
+        return result;
+      }
+
+      case "extract_structured": {
+        // Extract structured data from repeated elements
+        const container = params.container ? document.querySelector(params.container) : document.body;
+        if (!container) return [];
+        const rows = container.querySelectorAll(params.row);
+        const columns = params.columns || {};
+        return Array.from(rows).map(r => {
+          const obj = {};
+          for (const [name, sel] of Object.entries(columns)) {
+            const el = r.querySelector(sel);
+            obj[name] = el ? el.textContent.trim() : "";
+          }
+          return obj;
+        });
+      }
+
       case "take_screenshot": {
         // Screenshots are handled by background.js via chrome.tabs.captureVisibleTab
         return makeError("ActionError", "Screenshots must be handled by background.js");
@@ -483,7 +538,8 @@ function domActionHandler(action, params) {
     // Check for repeated children (lists, card grids)
     const childTags = {};
     for (const child of el.children) {
-      const key = child.tagName + (child.className ? `.${child.className.split(" ")[0]}` : "");
+      const firstClass = (child.className && typeof child.className === "string") ? child.className.split(" ")[0] : "";
+      const key = child.tagName + (firstClass ? `.${firstClass}` : "");
       childTags[key] = (childTags[key] || 0) + 1;
     }
     const repeated = Object.entries(childTags).find(([, count]) => count > 3);
@@ -491,11 +547,15 @@ function domActionHandler(action, params) {
     if (repeated) {
       const [pattern, count] = repeated;
       const tag = pattern.split(".")[0].toLowerCase();
-      const cls = pattern.includes(".") ? `.${pattern.split(".")[1]}` : "";
+      const firstClass = pattern.includes(".") ? pattern.split(".")[1] : "";
       lines.push(`${indent}${desc}`);
-      lines.push(`${indent}  <${tag}${cls}> x ${count} items`);
-      // Show samples
-      const items = el.querySelectorAll(`:scope > ${tag}${cls ? `.${cls}` : ""}`);
+      lines.push(`${indent}  <${tag}${firstClass ? "." + firstClass : ""}> x ${count} items`);
+      // Show samples using direct children filtering (avoids CSS selector issues)
+      const items = Array.from(el.children).filter(c => {
+        if (c.tagName !== tag.toUpperCase()) return false;
+        if (firstClass && (!c.classList || !c.classList.contains(firstClass))) return false;
+        return true;
+      });
       for (let i = 0; i < Math.min(sampleCount, items.length); i++) {
         const text = items[i].textContent.trim().substring(0, 100);
         lines.push(`${indent}    sample[${i}]: "${text}"`);

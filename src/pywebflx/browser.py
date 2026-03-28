@@ -353,23 +353,11 @@ class BrowserContext:
         all_rows: list[dict[str, str]] = []
 
         for page in range(max_pages):
-            js_code = f"""
-                (() => {{
-                    const container = document.querySelector({repr(container)});
-                    if (!container) return [];
-                    const rows = container.querySelectorAll({repr(row)});
-                    const columns = {columns or {}};
-                    return Array.from(rows).map(r => {{
-                        const obj = {{}};
-                        for (const [name, sel] of Object.entries(columns)) {{
-                            const el = r.querySelector(sel);
-                            obj[name] = el ? el.textContent.trim() : "";
-                        }}
-                        return obj;
-                    }});
-                }})()
-            """
-            page_data = await self._send("execute_js", {"code": js_code})
+            page_data = await self._send("extract_structured", {
+                "container": container,
+                "row": row,
+                "columns": columns or {},
+            })
             if isinstance(page_data, list):
                 all_rows.extend(page_data)
 
