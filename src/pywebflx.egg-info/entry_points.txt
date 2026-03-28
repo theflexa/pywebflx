@@ -1,0 +1,2 @@
+[console_scripts]
+pywebflx = pywebflx.cli:main

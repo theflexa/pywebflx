@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: pywebflx
+Version: 0.1.0
+Summary: Browser automation library for already-open Chrome pages, inspired by UiPath
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: websockets>=12.0
+Requires-Dist: loguru>=0.7.0
+Requires-Dist: click>=8.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23; extra == "dev"
+Requires-Dist: pytest-mock>=3.12; extra == "dev"

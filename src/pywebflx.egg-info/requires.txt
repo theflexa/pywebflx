@@ -1,0 +1,8 @@
+websockets>=12.0
+loguru>=0.7.0
+click>=8.0
+
+[dev]
+pytest>=8.0
+pytest-asyncio>=0.23
+pytest-mock>=3.12
