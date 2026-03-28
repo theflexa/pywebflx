@@ -1,0 +1,1858 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Browser automation for already-open Chrome pages, inspired by UiPath">
+      
+      
+      
+        <link rel="canonical" href="https://theflexa.github.io/pywebflx/superpowers/specs/2026-03-28-pywebflx-design/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>PyWebFlx — Design Specification - PyWebFlx</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pywebflx-design-specification" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="PyWebFlx" class="md-header__button md-logo" aria-label="PyWebFlx" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PyWebFlx
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PyWebFlx — Design Specification
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/theflexa/pywebflx" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    theflexa/pywebflx
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PyWebFlx" class="md-nav__button md-logo" aria-label="PyWebFlx" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    PyWebFlx
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/theflexa/pywebflx" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    theflexa/pywebflx
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalacao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/browser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    use_browser
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/interaction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interacao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extracao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/inspect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navegacao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/synchronization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sincronizacao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/javascript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuracao
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/exceptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Excecoes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exemplos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exemplos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/scraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web Scraping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/rpa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automacao RPA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-visao-geral" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Visao Geral
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Visao Geral">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-problema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Problema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Solucao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-publico-alvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Publico-Alvo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-arquitetura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Arquitetura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Arquitetura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-diagrama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Diagrama
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-abordagem-escolhida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Abordagem Escolhida
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-fluxo-de-um-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Fluxo de um Comando
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-reconexao-e-resiliencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Reconexao e Resiliencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-extensao-chrome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Extensao Chrome
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Extensao Chrome">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-estrutura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Estrutura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-manifest-v3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Manifest V3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-backgroundjs-responsabilidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 background.js — Responsabilidades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-injecao-de-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Injecao de Scripts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-protocolo-de-comunicacao-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Protocolo de Comunicacao (JSON)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-api-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. API Python
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. API Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-conexao-e-gerenciamento-de-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Conexao e Gerenciamento de Browser
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-navegacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Navegacao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-interacao-com-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Interacao com Elementos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-extracao-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Extracao de Dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-inspect-visao-do-dom-para-ias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Inspect — Visao do DOM para IAs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-espera-e-sincronizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Espera e Sincronizacao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-javascript-e-iframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 JavaScript e Iframes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-downloads-e-uploads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 Downloads e Uploads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#49-multiplas-abas-simultaneas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.9 Multiplas Abas Simultaneas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-excecoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Excecoes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Excecoes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-hierarquia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Hierarquia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-contexto-nas-excecoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Contexto nas Excecoes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Logging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-formato-padrao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Formato Padrao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-niveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Niveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-configuracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Configuracao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-sobrescrita-por-acao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Sobrescrita por Acao
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-implementacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Implementacao
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-configuracao-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Configuracao Global
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-estrutura-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Estrutura do Projeto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-cli-instalacao-da-extensao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. CLI — Instalacao da Extensao
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-backlog-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Backlog v2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-decisoes-de-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Decisoes de Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pywebflx-design-specification">PyWebFlx — Design Specification<a class="headerlink" href="#pywebflx-design-specification" title="Permanent link">&para;</a></h1>
+<p><strong>Data:</strong> 2026-03-28
+<strong>Status:</strong> Draft
+<strong>Versao:</strong> 1.0</p>
+<hr />
+<h2 id="1-visao-geral">1. Visao Geral<a class="headerlink" href="#1-visao-geral" title="Permanent link">&para;</a></h2>
+<p>PyWebFlx e uma biblioteca Python para automacao web que se conecta a paginas ja abertas no Chrome, sem criar sandbox (como Selenium faz). Inspirada na UiPath, permite interagir com o DOM de qualquer pagina via uma extensao Chrome que se comunica com Python por WebSocket.</p>
+<h3 id="11-problema">1.1 Problema<a class="headerlink" href="#11-problema" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Selenium exige uma instancia propria do Chrome (sandbox)</li>
+<li>Nao e possivel reaproveitar paginas ja abertas por outras aplicacoes</li>
+<li>Automacoes que dependem de sessao/login ativo nao funcionam bem com Selenium</li>
+</ul>
+<h3 id="12-solucao">1.2 Solucao<a class="headerlink" href="#12-solucao" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Extensao Chrome (Manifest V3) que acessa o DOM de qualquer aba</li>
+<li>Python atua como WebSocket server, extensao conecta como client</li>
+<li>API async inspirada na UiPath (click, type_into, get_text, inspect, extract_table, etc.)</li>
+<li>Funcao <code>inspect</code> otimizada para uso com IAs (estrutura resumida do DOM)</li>
+</ul>
+<h3 id="13-publico-alvo">1.3 Publico-Alvo<a class="headerlink" href="#13-publico-alvo" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Desenvolvedores Python que precisam automatizar paginas web ja abertas</li>
+<li>Times de RPA que buscam alternativa ao UiPath com controle programatico</li>
+<li>Fluxos de automacao assistidos por IA</li>
+</ul>
+<hr />
+<h2 id="2-arquitetura">2. Arquitetura<a class="headerlink" href="#2-arquitetura" title="Permanent link">&para;</a></h2>
+<h3 id="21-diagrama">2.1 Diagrama<a class="headerlink" href="#21-diagrama" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>+--------------------------------------------------+
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>|  Script do Usuario (Python)                      |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>|                                                  |
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>|  async with use_browser(url=&quot;sicoob&quot;) as b:      |
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>|      await b.click(text=&quot;Entrar&quot;)                |
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>|      saldo = await b.get_text(&quot;.saldo&quot;)          |
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>+-------------------+------------------------------+
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                    | API async (pywebflx)
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                    v
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>+--------------------------------------------------+
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>|  PyWebFlx Server (Python)                        |
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>|  +-------------+ +------------+ +--------------+ |
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>|  | WebSocket   | | Tab        | | Command      | |
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>|  | Server      | | Manager    | | Dispatcher   | |
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>|  | :9819       | |            | |              | |
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>|  +------+------+ +------------+ +--------------+ |
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>+---------|-----------------------------------------+
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>          | ws://localhost:9819
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>          v
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>+--------------------------------------------------+
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>|  Extensao Chrome (Manifest V3)                   |
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>|  +-------------+ +----------------------------+ |
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>|  | background  | | content scripts            | |
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>|  | .js         |-| (injetados sob demanda     | |
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>|  | WS Client   | |  via chrome.scripting)     | |
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>|  | + keepalive | |  executam no DOM da aba     | |
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>|  +-------------+ +----------------------------+ |
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>+--------------------------------------------------+
+</code></pre></div>
+<h3 id="22-abordagem-escolhida">2.2 Abordagem Escolhida<a class="headerlink" href="#22-abordagem-escolhida" title="Permanent link">&para;</a></h3>
+<p><strong>Python como WebSocket server, extensao como client.</strong></p>
+<p>Razoes:
+- Evita limitacao do Manifest V3 (service workers nao podem abrir server sockets)
+- Python tem controle total como server — pode gerenciar multiplas extensoes/abas
+- Sem componentes intermediarios (sem Native Messaging, sem Registry)
+- Setup simples: instala extensao, roda Python, pronto</p>
+<h3 id="23-fluxo-de-um-comando">2.3 Fluxo de um Comando<a class="headerlink" href="#23-fluxo-de-um-comando" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Python chama <code>await browser.click("#btn")</code></li>
+<li>PyWebFlx serializa: <code>{"id": "cmd_1", "action": "click", "tabId": 42, "params": {...}}</code></li>
+<li>Envia via WebSocket para extensao <code>background.js</code></li>
+<li>Background injeta/executa script na aba 42 via <code>chrome.scripting.executeScript</code></li>
+<li>Resultado volta: <code>{"id": "cmd_1", "success": true}</code> ou <code>{"id": "cmd_1", "error": "..."}</code></li>
+<li>Python resolve o <code>await</code> com o resultado</li>
+</ol>
+<h3 id="24-reconexao-e-resiliencia">2.4 Reconexao e Resiliencia<a class="headerlink" href="#24-reconexao-e-resiliencia" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Extensao tenta conectar ao Python a cada 3 segundos se desconectada</li>
+<li><code>chrome.alarms</code> a cada 25s mantém o service worker vivo</li>
+<li>Se a aba alvo fecha, extensao notifica Python via evento <code>tab_closed</code></li>
+<li>Comandos com <code>tabId</code> invalido retornam <code>TabNotFoundError</code></li>
+</ul>
+<hr />
+<h2 id="3-extensao-chrome">3. Extensao Chrome<a class="headerlink" href="#3-extensao-chrome" title="Permanent link">&para;</a></h2>
+<h3 id="31-estrutura">3.1 Estrutura<a class="headerlink" href="#31-estrutura" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>extension/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  manifest.json          # Manifest V3, permissoes
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  background.js          # Service worker: WS client, coordenador
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  content.js             # Injetado sob demanda: executa no DOM
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  icons/                 # Icone da extensao (16, 48, 128px)
+</code></pre></div>
+<h3 id="32-manifest-v3">3.2 Manifest V3<a class="headerlink" href="#32-manifest-v3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">&quot;manifest_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PyWebFlx Bridge&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bridge between PyWebFlx Python library and Chrome&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="s2">&quot;tabs&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="s2">&quot;scripting&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="s2">&quot;activeTab&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="s2">&quot;downloads&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="s2">&quot;alarms&quot;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="p">],</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="nt">&quot;host_permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;all_urls&gt;&quot;</span><span class="p">],</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="nt">&quot;background&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nt">&quot;service_worker&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;background.js&quot;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="33-backgroundjs-responsabilidades">3.3 background.js — Responsabilidades<a class="headerlink" href="#33-backgroundjs-responsabilidades" title="Permanent link">&para;</a></h3>
+<ul>
+<li>WebSocket client: conecta em <code>ws://localhost:9819</code> (configuravel)</li>
+<li>Keep-alive: <code>chrome.alarms</code> a cada 25s</li>
+<li>Dispatcher: recebe comandos JSON do Python, roteia para aba correta</li>
+<li>Tab Manager: busca abas por titulo/URL, cria novas abas, reporta eventos</li>
+</ul>
+<h3 id="34-injecao-de-scripts">3.4 Injecao de Scripts<a class="headerlink" href="#34-injecao-de-scripts" title="Permanent link">&para;</a></h3>
+<p>Nao usa content script persistente. O <code>background.js</code> injeta funcoes especificas via <code>chrome.scripting.executeScript</code> conforme o comando recebido. Cada acao e uma execucao isolada.</p>
+<h3 id="35-protocolo-de-comunicacao-json">3.5 Protocolo de Comunicacao (JSON)<a class="headerlink" href="#35-protocolo-de-comunicacao-json" title="Permanent link">&para;</a></h3>
+<p><strong>Comando (Python -&gt; Extensao):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmd_123&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">&quot;tabId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">&quot;params&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">&quot;selector&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#btn&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">&quot;selectorType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;css&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">&quot;clickType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;single&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nt">&quot;mouseButton&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;left&quot;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Resposta sucesso (Extensao -&gt; Python):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmd_123&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Resposta erro (Extensao -&gt; Python):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmd_123&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ElementNotFoundError&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Selector &#39;#btn&#39; not found within 10s&quot;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Evento nao-solicitado (Extensao -&gt; Python):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tab_closed&quot;</span><span class="p">,</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nt">&quot;tabId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="4-api-python">4. API Python<a class="headerlink" href="#4-api-python" title="Permanent link">&para;</a></h2>
+<h3 id="41-conexao-e-gerenciamento-de-browser">4.1 Conexao e Gerenciamento de Browser<a class="headerlink" href="#41-conexao-e-gerenciamento-de-browser" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pywebflx</span><span class="w"> </span><span class="kn">import</span> <span class="n">use_browser</span><span class="p">,</span> <span class="n">BrowserNotFoundError</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Conectar por URL (parcial)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;sicoob.com.br&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">browser</span><span class="p">:</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="o">...</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># Conectar por titulo</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Portal Sicoob&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">browser</span><span class="p">:</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="o">...</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1"># Conectar com fallback (if_not_open)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;sicoob.com.br&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Portal Sicoob&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="n">if_not_open</span><span class="o">=</span><span class="s2">&quot;https://portal.sicoob.com.br/login&quot;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="p">)</span> <span class="k">as</span> <span class="n">browser</span><span class="p">:</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="o">...</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="c1"># Se nao encontrar e if_not_open nao definido -&gt; BrowserNotFoundError</span>
+</code></pre></div>
+<p><strong>Logica do if_not_open (lado Python):</strong></p>
+<ol>
+<li>Python pergunta a extensao: "tem aba com titulo X ou URL Y?"</li>
+<li>Se sim -&gt; conecta</li>
+<li>Se nao e <code>if_not_open</code> definido:</li>
+<li>Chrome aberto -&gt; extensao cria nova aba com a URL</li>
+<li>Chrome fechado -&gt; Python abre Chrome via subprocess, espera extensao conectar, cria aba</li>
+<li>Se nao e <code>if_not_open</code> nao definido -&gt; lanca <code>BrowserNotFoundError</code></li>
+</ol>
+<h3 id="42-navegacao">4.2 Navegacao<a class="headerlink" href="#42-navegacao" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">navigate_to</span><span class="p">(</span><span class="s2">&quot;https://portal.sicoob.com.br/dashboard&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">go_back</span><span class="p">()</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">go_forward</span><span class="p">()</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">close_tab</span><span class="p">()</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">close_browser</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="43-interacao-com-elementos">4.3 Interacao com Elementos<a class="headerlink" href="#43-interacao-com-elementos" title="Permanent link">&para;</a></h3>
+<p><strong>Seletores flexiveis:</strong> CSS, XPath, ou atributos humanizados.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># CSS</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn-login&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># XPath</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;//button[@id=&#39;submit&#39;]&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Atributos humanizados</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Entrar&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;button&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Click avancado:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#menu&quot;</span><span class="p">,</span> <span class="n">click_type</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="n">delay_after</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#item&quot;</span><span class="p">,</span> <span class="n">mouse_button</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn&quot;</span><span class="p">,</span> <span class="n">retry</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="s2">&quot;.sucesso&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Digitacao:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#email&quot;</span><span class="p">,</span> <span class="s2">&quot;usuario@sicoob.com.br&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#senha&quot;</span><span class="p">,</span> <span class="s2">&quot;123&quot;</span><span class="p">,</span> <span class="n">delay_between_keys</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Set text (sem simular digitacao):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;#campo&quot;</span><span class="p">,</span> <span class="s2">&quot;valor direto&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Checkbox, dropdown, hover, hotkeys:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;#aceito-termos&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">uncheck</span><span class="p">(</span><span class="s2">&quot;#newsletter&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">select_item</span><span class="p">(</span><span class="s2">&quot;#estado&quot;</span><span class="p">,</span> <span class="s2">&quot;Para&quot;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">hover</span><span class="p">(</span><span class="s2">&quot;#menu-dropdown&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">send_hotkey</span><span class="p">(</span><span class="s2">&quot;ctrl+a&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">send_hotkey</span><span class="p">(</span><span class="s2">&quot;Enter&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="44-extracao-de-dados">4.4 Extracao de Dados<a class="headerlink" href="#44-extracao-de-dados" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">texto</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="s2">&quot;.saldo-conta&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">href</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">get_attribute</span><span class="p">(</span><span class="s2">&quot;a.link-relatorio&quot;</span><span class="p">,</span> <span class="s2">&quot;href&quot;</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">html</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">get_full_text</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Extract Table com paginacao:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Tabela HTML simples</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">dados</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">extract_table</span><span class="p">(</span><span class="s2">&quot;#tabela-clientes&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># [{&quot;Nome&quot;: &quot;Joao&quot;, &quot;Saldo&quot;: &quot;1.200,00&quot;}, ...]</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># Com paginacao automatica</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">dados</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">extract_table</span><span class="p">(</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="s2">&quot;#tabela-clientes&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="n">next_page</span><span class="o">=</span><span class="s2">&quot;#btn-proxima&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>    <span class="n">max_pages</span><span class="o">=</span><span class="mi">10</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="p">)</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="c1"># Dados estruturados nao-&lt;table&gt; (cards, divs repetitivas)</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="n">dados</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">extract_data</span><span class="p">(</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>    <span class="n">container</span><span class="o">=</span><span class="s2">&quot;#lista-resultados&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>    <span class="n">row</span><span class="o">=</span><span class="s2">&quot;.card-cliente&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>        <span class="s2">&quot;Nome&quot;</span><span class="p">:</span> <span class="s2">&quot;.card-title&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>        <span class="s2">&quot;CPF&quot;</span><span class="p">:</span> <span class="s2">&quot;.card-cpf&quot;</span><span class="p">,</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>        <span class="s2">&quot;Saldo&quot;</span><span class="p">:</span> <span class="s2">&quot;.card-saldo span&quot;</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>    <span class="p">},</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>    <span class="n">next_page</span><span class="o">=</span><span class="s2">&quot;#btn-proxima&quot;</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Screenshot:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">take_screenshot</span><span class="p">(</span><span class="s2">&quot;relatorio.png&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">take_screenshot</span><span class="p">(</span><span class="s2">&quot;elemento.png&quot;</span><span class="p">,</span> <span class="n">selector</span><span class="o">=</span><span class="s2">&quot;#grafico&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="45-inspect-visao-do-dom-para-ias">4.5 Inspect — Visao do DOM para IAs<a class="headerlink" href="#45-inspect-visao-do-dom-para-ias" title="Permanent link">&para;</a></h3>
+<p>Retorna estrutura resumida do DOM otimizada para consumo por IAs.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Pagina inteira</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">estrutura</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">inspect</span><span class="p">()</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Escopo especifico</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">estrutura</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="s2">&quot;#login-form&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1"># Com controle de profundidade e amostras</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="n">estrutura</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">inspect</span><span class="p">(</span><span class="s2">&quot;#tabela&quot;</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Exemplo de saida do inspect:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;body&gt;
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  &lt;header#top-nav .navbar&gt;
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    &lt;button.btn-menu&gt; &quot;Menu&quot;
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    &lt;input#search type=&quot;search&quot; placeholder=&quot;Buscar...&quot;&gt;
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    &lt;a.logo&gt; &quot;Portal Sicoob&quot;
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>  &lt;/header&gt;
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>  &lt;main#content&gt;
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    &lt;form#login-form&gt;
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>      &lt;input#usuario type=&quot;text&quot; placeholder=&quot;Usuario&quot; [required]&gt;
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>      &lt;input#senha type=&quot;password&quot; placeholder=&quot;Senha&quot; [required]&gt;
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>      &lt;select#agencia&gt; 3 options: [&quot;0001 - Centro&quot;, &quot;0032 - Belem&quot;, &quot;0045 - Maraba&quot;]
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>      &lt;button#btn-login type=&quot;submit&quot;&gt; &quot;Entrar&quot;
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>    &lt;/form&gt;
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    &lt;div.avisos&gt;
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>      &lt;table#tabela-avisos&gt; 3 cols x 12 rows
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>    &lt;/div&gt;
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>  &lt;/main&gt;
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>&lt;/body&gt;
+</code></pre></div>
+<h3 id="46-espera-e-sincronizacao">4.6 Espera e Sincronizacao<a class="headerlink" href="#46-espera-e-sincronizacao" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">existe</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">element_exists</span><span class="p">(</span><span class="s2">&quot;#modal-sucesso&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">wait_element</span><span class="p">(</span><span class="s2">&quot;#loading&quot;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="s2">&quot;visible&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">wait_element_vanish</span><span class="p">(</span><span class="s2">&quot;#spinner&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">elem</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="s2">&quot;#campo-nome&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="47-javascript-e-iframes">4.7 JavaScript e Iframes<a class="headerlink" href="#47-javascript-e-iframes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">resultado</span> <span class="o">=</span> <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">execute_js</span><span class="p">(</span><span class="s2">&quot;return document.title&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">inject_js</span><span class="p">(</span><span class="s2">&quot;window.scrollTo(0, document.body.scrollHeight)&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="k">async</span> <span class="k">with</span> <span class="n">browser</span><span class="o">.</span><span class="n">switch_to</span><span class="p">(</span><span class="s2">&quot;#iframe-conteudo&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">frame</span><span class="p">:</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="k">await</span> <span class="n">frame</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn-dentro-do-iframe&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="48-downloads-e-uploads">4.8 Downloads e Uploads<a class="headerlink" href="#48-downloads-e-uploads" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">set_file</span><span class="p">(</span><span class="s2">&quot;#input-upload&quot;</span><span class="p">,</span> <span class="s2">&quot;C:/docs/relatorio.pdf&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">async</span> <span class="k">with</span> <span class="n">browser</span><span class="o">.</span><span class="n">wait_for_download</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="k">as</span> <span class="n">download</span><span class="p">:</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn-download&quot;</span><span class="p">)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="n">caminho</span> <span class="o">=</span> <span class="n">download</span><span class="o">.</span><span class="n">path</span>
+</code></pre></div>
+<h3 id="49-multiplas-abas-simultaneas">4.9 Multiplas Abas Simultaneas<a class="headerlink" href="#49-multiplas-abas-simultaneas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;portal&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">aba1</span><span class="p">:</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;email&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">aba2</span><span class="p">:</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>        <span class="n">dado</span> <span class="o">=</span> <span class="k">await</span> <span class="n">aba1</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="s2">&quot;.saldo&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>        <span class="k">await</span> <span class="n">aba2</span><span class="o">.</span><span class="n">type_into</span><span class="p">(</span><span class="s2">&quot;#corpo&quot;</span><span class="p">,</span> <span class="n">dado</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="5-excecoes">5. Excecoes<a class="headerlink" href="#5-excecoes" title="Permanent link">&para;</a></h2>
+<h3 id="51-hierarquia">5.1 Hierarquia<a class="headerlink" href="#51-hierarquia" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>PyWebFlxError (base)
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>  ConnectionError
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>    ExtensionNotConnectedError
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>    ConnectionLostError
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>  BrowserError
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>    BrowserNotFoundError
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    TabNotFoundError
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    TabClosedError
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>  ElementError
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    ElementNotFoundError
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    ElementTimeoutError
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>    ElementNotInteractableError
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    SelectorError
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>  ActionError
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    NavigationError
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    InjectionError
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    DownloadError
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>    ScreenshotError
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>  ConfigError
+</code></pre></div>
+<h3 id="52-contexto-nas-excecoes">5.2 Contexto nas Excecoes<a class="headerlink" href="#52-contexto-nas-excecoes" title="Permanent link">&para;</a></h3>
+<p>Cada excecao carrega informacoes relevantes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn-inexistente&quot;</span><span class="p">)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">except</span> <span class="n">ElementNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>    <span class="n">e</span><span class="o">.</span><span class="n">selector</span>    <span class="c1"># &quot;#btn-inexistente&quot;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>    <span class="n">e</span><span class="o">.</span><span class="n">tab_id</span>      <span class="c1"># 42</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>    <span class="n">e</span><span class="o">.</span><span class="n">timeout</span>     <span class="c1"># 10</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    <span class="n">e</span><span class="o">.</span><span class="n">message</span>     <span class="c1"># &quot;Selector &#39;#btn-inexistente&#39; not found within 10s&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="6-logging">6. Logging<a class="headerlink" href="#6-logging" title="Permanent link">&para;</a></h2>
+<h3 id="61-formato-padrao">6.1 Formato Padrao<a class="headerlink" href="#61-formato-padrao" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>2026-03-28 14:32:05.123 [INFO]  [browser.click] #btn-salvar -&gt; tab:42 -&gt; success (120ms)
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>2026-03-28 14:32:05.450 [INFO]  [browser.type_into] #email -&gt; &quot;joao@sicoob.com.br&quot; -&gt; tab:42 -&gt; success (85ms)
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>2026-03-28 14:32:06.102 [WARN]  [browser.click] #btn-enviar -&gt; tab:42 -&gt; retry 1/3 (ElementNotInteractableError)
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>2026-03-28 14:32:07.540 [INFO]  [browser.click] #btn-enviar -&gt; tab:42 -&gt; success (retry 2, 340ms)
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>2026-03-28 14:32:08.001 [ERROR] [browser.extract_table] #tabela -&gt; tab:42 -&gt; failed: TabClosedError
+</code></pre></div>
+<h3 id="62-niveis">6.2 Niveis<a class="headerlink" href="#62-niveis" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Nivel</th>
+<th>O que loga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ERROR</td>
+<td>Falha final (apos todos os retries)</td>
+</tr>
+<tr>
+<td>WARN</td>
+<td>Retry, reconexao, fallback</td>
+</tr>
+<tr>
+<td>INFO</td>
+<td>Acao executada com sucesso</td>
+</tr>
+<tr>
+<td>DEBUG</td>
+<td>Detalhes internos: seletor resolvido, payload JSON, tempo de cada etapa</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>Tudo: bytes do WebSocket, DOM parcial retornado, cada tentativa de resolucao</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-configuracao">6.3 Configuracao<a class="headerlink" href="#63-configuracao" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pywebflx</span><span class="w"> </span><span class="kn">import</span> <span class="n">configure_logging</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">configure_logging</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>                          <span class="c1"># console (padrao)</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="n">configure_logging</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="s2">&quot;automacao.log&quot;</span><span class="p">)</span>   <span class="c1"># arquivo</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="n">configure_logging</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;DISABLED&quot;</span><span class="p">)</span>                      <span class="c1"># silencioso</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">configure_logging</span><span class="p">(</span><span class="n">handler</span><span class="o">=</span><span class="n">meu_handler</span><span class="p">)</span>                   <span class="c1"># handler customizado</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="n">configure_logging</span><span class="p">(</span><span class="n">timestamp_format</span><span class="o">=</span><span class="s2">&quot;%H:%M:%S&quot;</span><span class="p">)</span>           <span class="c1"># formato compacto</span>
+</code></pre></div>
+<h3 id="64-sobrescrita-por-acao">6.4 Sobrescrita por Acao<a class="headerlink" href="#64-sobrescrita-por-acao" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="s2">&quot;#btn-critico&quot;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>    <span class="c1"># mais detalhe nesta acao</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="k">await</span> <span class="n">browser</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">row_selector</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;WARN&quot;</span><span class="p">)</span>       <span class="c1"># menos ruido em loop</span>
+</code></pre></div>
+<h3 id="65-implementacao">6.5 Implementacao<a class="headerlink" href="#65-implementacao" title="Permanent link">&para;</a></h3>
+<p>Decorator interno <code>@_logged_action</code> em cada metodo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nd">@_logged_action</span><span class="p">(</span><span class="s2">&quot;browser.click&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    <span class="o">...</span>
+</code></pre></div>
+<p>O decorator mede tempo, loga entrada/saida/erro/retry automaticamente. Timestamp <code>YYYY-MM-DD HH:MM:SS.mmm</code> com milissegundos por padrao.</p>
+<hr />
+<h2 id="7-configuracao-global">7. Configuracao Global<a class="headerlink" href="#7-configuracao-global" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pywebflx</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyWebFlxConfig</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="c1"># Via construtor</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="k">async</span> <span class="k">with</span> <span class="n">use_browser</span><span class="p">(</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;sicoob.com.br&quot;</span><span class="p">,</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="n">config</span><span class="o">=</span><span class="n">PyWebFlxConfig</span><span class="p">(</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>        <span class="n">default_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>        <span class="n">delay_between_actions</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>        <span class="n">retry_count</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>        <span class="n">on_error</span><span class="o">=</span><span class="s2">&quot;continue&quot;</span><span class="p">,</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>        <span class="n">ws_port</span><span class="o">=</span><span class="mi">9819</span><span class="p">,</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>        <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>    <span class="p">)</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="p">)</span> <span class="k">as</span> <span class="n">browser</span><span class="p">:</span>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>    <span class="o">...</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="c1"># Ou defaults globais</span>
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="n">PyWebFlxConfig</span><span class="o">.</span><span class="n">set_defaults</span><span class="p">(</span>
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a>    <span class="n">default_timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>    <span class="n">retry_count</span><span class="o">=</span><span class="mi">3</span>
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a><span class="p">)</span>
+</code></pre></div>
+<p><strong>Prioridade:</strong> parametro da acao &gt; config do use_browser &gt; defaults globais</p>
+<hr />
+<h2 id="8-estrutura-do-projeto">8. Estrutura do Projeto<a class="headerlink" href="#8-estrutura-do-projeto" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>pywebflx/
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>  pyproject.toml
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>  src/
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    pywebflx/
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>      __init__.py           # exports publicos
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>      browser.py            # use_browser, BrowserContext
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>      actions.py            # click, type_into, get_text, inspect, extract_table...
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>      selectors.py          # resolucao CSS/XPath/atributos humanizados
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>      connection.py         # WebSocket server
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>      config.py             # PyWebFlxConfig
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>      logging.py            # configure_logging, decorator @_logged_action
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>      exceptions.py         # hierarquia de excecoes
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>      cli.py                # install-extension command
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>  extension/
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>    manifest.json
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>    background.js
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a>    content.js
+<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a>    icons/
+<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a>  tests/
+<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a>  docs/
+<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a>    backlog.md              # funcionalidades futuras (v2)
+</code></pre></div>
+<hr />
+<h2 id="9-cli-instalacao-da-extensao">9. CLI — Instalacao da Extensao<a class="headerlink" href="#9-cli-instalacao-da-extensao" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># Instala/guia instalacao da extensao no Chrome</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>pywebflx<span class="w"> </span>install-extension
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="c1"># Verifica se extensao esta instalada e conectando</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>pywebflx<span class="w"> </span>check
+</code></pre></div>
+<p>O comando <code>install-extension</code>:
+1. Localiza o diretorio da extensao empacotada junto com a lib
+2. Abre <code>chrome://extensions</code> no Chrome
+3. Instrui o usuario a habilitar modo desenvolvedor e carregar a extensao descompactada
+4. Verifica conexao WebSocket apos instalacao</p>
+<hr />
+<h2 id="10-backlog-v2">10. Backlog v2<a class="headerlink" href="#10-backlog-v2" title="Permanent link">&para;</a></h2>
+<p>Funcionalidades planejadas para versoes futuras, documentadas em <code>docs/backlog.md</code>:</p>
+<ul>
+<li><code>for_each</code> com paginacao automatica (<code>next_page=</code>)</li>
+<li><code>assert_text</code>, <code>assert_visible</code> (verificacoes explicitas)</li>
+<li><code>on_element_appear</code> / <code>on_element_vanish</code> (triggers por evento)</li>
+<li>Native Messaging como alternativa ao WebSocket</li>
+<li>Publicacao na Chrome Web Store</li>
+<li>Suporte a Firefox (WebExtensions API)</li>
+<li>Screen Scraping via OCR</li>
+</ul>
+<hr />
+<h2 id="11-decisoes-de-design">11. Decisoes de Design<a class="headerlink" href="#11-decisoes-de-design" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Decisao</th>
+<th>Escolha</th>
+<th>Alternativa descartada</th>
+<th>Razao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comunicacao</td>
+<td>WebSocket</td>
+<td>Native Messaging</td>
+<td>Simplicidade de setup, sem Registry</td>
+</tr>
+<tr>
+<td>Direcao WS</td>
+<td>Python=server, extensao=client</td>
+<td>Inverso</td>
+<td>Manifest V3 nao permite server no service worker</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Async/await</td>
+<td>Sincrona</td>
+<td>Moderno, bom para esperas e paralelismo</td>
+</tr>
+<tr>
+<td>Seletores</td>
+<td>CSS + XPath + atributos</td>
+<td>Apenas CSS</td>
+<td>XPath necessario para casos complexos, atributos humanizados melhoram DX</td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>Loguru com fallback</td>
+<td>stdlib logging</td>
+<td>Melhor DX, cores, niveis (TRACE), mas com fallback para stdlib</td>
+</tr>
+<tr>
+<td>Excecoes</td>
+<td>Customizadas (PyWebFlxError)</td>
+<td>Reusar Selenium</td>
+<td>Produto novo, identidade propria</td>
+</tr>
+<tr>
+<td>Distribuicao</td>
+<td>Lib publica (preparar para PyPI)</td>
+<td>Uso interno apenas</td>
+<td>Estrutura pronta para abrir sem retrabalho</td>
+</tr>
+<tr>
+<td>Instalacao extensao</td>
+<td>CLI assistido</td>
+<td>Manual ou Chrome Web Store</td>
+<td>Bom equilibrio entre DX e complexidade</td>
+</tr>
+<tr>
+<td>Inspect</td>
+<td>Estrutura resumida do DOM</td>
+<td>outerHTML bruto</td>
+<td>95% menos tokens para IAs, mesma informacao util</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "content.code.copy", "content.code.annotate", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
