@@ -23,6 +23,24 @@ async with use_browser(
 | `open` | `str` | `"if_not_open"` | Comportamento de abertura (veja abaixo) |
 | `config` | `PyWebFlxConfig` | `None` | Configuração personalizada |
 
+!!! info "Correspondência parcial"
+    Tanto `url` quanto `title` usam **correspondência parcial** (contém). Não é necessário a URL completa — basta o trecho fixo. Isso é especialmente útil para URLs dinâmicas:
+
+    ```python
+    # Encontra qualquer aba em mycon.gupy.io/candidates/...
+    async with use_browser(url="mycon.gupy.io/candidates") as browser:
+        ...
+    ```
+
+!!! tip "Combinando `url` e `title`"
+    Você pode usar ambos os parâmetros juntos. A busca usa lógica **AND** — a aba precisa corresponder aos dois critérios:
+
+    ```python
+    # Aba deve conter "gupy.io" na URL E "Candidatos" no título
+    async with use_browser(url="gupy.io", title="Candidatos") as browser:
+        ...
+    ```
+
 ### Parâmetro `open`
 
 | Valor | Comportamento |

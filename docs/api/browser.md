@@ -23,6 +23,24 @@ async with use_browser(
 | `open` | `str` | `"if_not_open"` | Opening behavior (see below) |
 | `config` | `PyWebFlxConfig` | `None` | Custom configuration |
 
+!!! info "Partial match"
+    Both `url` and `title` use **partial match** (contains). You don't need the full URL — just the fixed part is enough. This is especially useful for dynamic URLs:
+
+    ```python
+    # Matches any tab at mycon.gupy.io/candidates/...
+    async with use_browser(url="mycon.gupy.io/candidates") as browser:
+        ...
+    ```
+
+!!! tip "Combining `url` and `title`"
+    You can use both parameters together. The search uses **AND** logic — the tab must match both criteria:
+
+    ```python
+    # Tab must contain "gupy.io" in URL AND "Candidatos" in title
+    async with use_browser(url="gupy.io", title="Candidatos") as browser:
+        ...
+    ```
+
 ### `open` parameter
 
 | Value | Behavior |
