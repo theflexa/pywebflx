@@ -167,12 +167,14 @@ async function handleCommand(raw) {
 
 async function findTabs(params) {
   const { title, url } = params;
-  const query = {};
-  if (title) query.title = `*${title}*`;
-  if (url) query.url = `*${url}*`;
-
-  const tabs = await chrome.tabs.query(query);
-  return tabs.map((t) => ({ id: t.id, title: t.title, url: t.url }));
+  const allTabs = await chrome.tabs.query({});
+  return allTabs
+    .filter((t) => {
+      if (title && !t.title.toLowerCase().includes(title.toLowerCase())) return false;
+      if (url && !t.url.toLowerCase().includes(url.toLowerCase())) return false;
+      return true;
+    })
+    .map((t) => ({ id: t.id, title: t.title, url: t.url }));
 }
 
 async function createTab(params) {
