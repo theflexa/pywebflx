@@ -16,10 +16,7 @@ configure_logging(level="INFO")
 
 async def main():
     print("Aguardando extensao conectar...")
-    async with use_browser(
-        url="quotes.toscrape.com",
-        if_not_open="https://quotes.toscrape.com/"
-    ) as browser:
+    async with use_browser(url="https://quotes.toscrape.com/") as browser:
         print("Conectado!\n")
 
         # ---------------------------------------------------------------

@@ -5,7 +5,7 @@ configure_logging(level="INFO")
 
 async def main():
     print("Aguardando extensao conectar...")
-    async with use_browser(url="www.google.com") as browser:
+    async with use_browser(url="https://toscrape.com/") as browser:
         print("Conectado!")
 
         # Ver estrutura da pagina
@@ -14,8 +14,8 @@ async def main():
         print(estrutura)
 
         # Digitar no campo de busca
-        await browser.type_into("[name='q']", text="PyWebFlx funciona!")
-        print("\nDigitou no campo de busca!")
+        await browser.click("//*/tbody/tr[2]/td[1]/a")
+        print("\nClicou no botao de login!")      
 
         # Pegar titulo da pagina
         titulo = await browser.execute_js("return document.title")

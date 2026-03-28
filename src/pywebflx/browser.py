@@ -530,27 +530,39 @@ async def use_browser(
     *,
     url: str | None = None,
     title: str | None = None,
-    if_not_open: str | None = None,
+    open: str = "if_not_open",
     config: PyWebFlxConfig | None = None,
 ) -> AsyncGenerator[BrowserContext, None]:
     """Connect to an already-open Chrome tab and return a BrowserContext.
 
     Args:
-        url: Partial URL to search for in open tabs.
+        url: URL to search for (partial match) and/or open.
         title: Partial title to search for in open tabs.
-        if_not_open: URL to open if no matching tab is found.
+        open: Open behavior, inspired by UiPath:
+            - "if_not_open" (default): Search for existing tab, open url if not found.
+            - "open": Always open a new tab with url.
+            - "never": Only connect to existing tab, never open.
         config: Configuration overrides. Uses defaults if not provided.
 
     Yields:
         BrowserContext bound to the matched/opened tab.
 
     Raises:
-        BrowserNotFoundError: If no tab found and no if_not_open fallback.
+        BrowserNotFoundError: If no tab found and open="never".
         ExtensionNotConnectedError: If Chrome extension is not connected.
 
     Example:
-        async with use_browser(url="sicoob.com.br", if_not_open="https://sicoob.com.br") as browser:
+        # Opens if not already open (default)
+        async with use_browser(url="https://sicoob.com.br") as browser:
             await browser.click("#login")
+
+        # Always open a new tab
+        async with use_browser(url="https://sicoob.com.br", open="open") as browser:
+            ...
+
+        # Never open, only attach to existing
+        async with use_browser(url="sicoob.com.br", open="never") as browser:
+            ...
     """
     cfg = config or PyWebFlxConfig()
     server = WebSocketServer(port=cfg.ws_port)
@@ -560,7 +572,18 @@ async def use_browser(
         await server.wait_for_connection(timeout=30)
 
         mgr = TabManager(server)
-        tab = await mgr.find_or_open(title=title, url=url, if_not_open=if_not_open)
+
+        if open == "open":
+            # Always open a new tab
+            if not url:
+                raise BrowserNotFoundError(title=title, url=url)
+            tab = await mgr.create_tab(url)
+        elif open == "never":
+            # Only connect to existing, never open
+            tab = await mgr.find_tab(title=title, url=url)
+        else:
+            # "if_not_open" (default): search first, open if not found
+            tab = await mgr.find_or_open(title=title, url=url, if_not_open=url)
 
         ctx = BrowserContext(conn=server, tab_id=tab["id"], config=cfg)
         yield ctx
