@@ -2,224 +2,224 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://theflexa.github.io/pywebflx/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/backlog/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/backlog/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/backlog/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/installation/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/installation/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/installation/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/browser/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/browser/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/browser/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/config/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/config/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/config/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/exceptions/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/exceptions/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/exceptions/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/extraction/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/extraction/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/extraction/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/inspect/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/inspect/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/inspect/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/interaction/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/interaction/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/interaction/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/javascript/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/javascript/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/javascript/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/navigation/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/navigation/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/navigation/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/api/synchronization/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/synchronization/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/synchronization/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/examples/rpa/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/examples/rpa/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/examples/rpa/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/examples/scraping/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/examples/scraping/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/examples/scraping/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/superpowers/plans/2026-03-28-pywebflx-implementation/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/superpowers/plans/2026-03-28-pywebflx-implementation/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/superpowers/plans/2026-03-28-pywebflx-implementation/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/superpowers/specs/2026-03-28-pywebflx-design/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/superpowers/specs/2026-03-28-pywebflx-design/"/>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/superpowers/specs/2026-03-28-pywebflx-design/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/backlog/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/backlog/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/backlog/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/installation/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/installation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/installation/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/browser/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/browser/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/browser/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/config/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/config/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/config/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/exceptions/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/exceptions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/exceptions/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/extraction/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/extraction/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/extraction/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/inspect/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/inspect/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/inspect/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/interaction/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/interaction/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/interaction/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/javascript/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/javascript/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/javascript/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/navigation/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/navigation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/navigation/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/api/synchronization/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/api/synchronization/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/api/synchronization/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/examples/rpa/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/examples/rpa/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/examples/rpa/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/examples/scraping/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/examples/scraping/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/examples/scraping/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/superpowers/plans/2026-03-28-pywebflx-implementation/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/superpowers/plans/2026-03-28-pywebflx-implementation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/superpowers/plans/2026-03-28-pywebflx-implementation/"/>
     </url>
     <url>
         <loc>https://theflexa.github.io/pywebflx/pt/superpowers/specs/2026-03-28-pywebflx-design/</loc>
-        <lastmod>2026-03-28</lastmod>
+        <lastmod>2026-03-29</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="pt" href="https://theflexa.github.io/pywebflx/pt/superpowers/specs/2026-03-28-pywebflx-design/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://theflexa.github.io/pywebflx/superpowers/specs/2026-03-28-pywebflx-design/"/>
