@@ -10,7 +10,7 @@ Example:
         text = await browser.get_text(".welcome")
 """
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 from pywebflx.browser import use_browser, BrowserContext
 from pywebflx.config import PyWebFlxConfig
