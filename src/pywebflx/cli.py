@@ -1,9 +1,9 @@
-"""PyWebFlx CLI — install extension and check connection.
+"""PyWebFlx CLI.
 
 Commands:
-    pywebflx install-extension  — Install Chrome extension (copies to clipboard + opens Chrome)
+    pywebflx install-extension  — Show extension installation steps
     pywebflx check              — Verify extension is connected
-    pywebflx uninstall-extension — Remove extension
+    pywebflx docs               — Show documentation links
 
 Example:
     $ pip install pywebflx
@@ -21,19 +21,19 @@ import click
 
 from pywebflx import __version__
 
+DOCS_URL = "https://theflexa.github.io/pywebflx/"
+REPO_URL = "https://github.com/theflexa/pywebflx"
+
 
 def _get_extension_dir() -> Path:
     """Get the path to the bundled Chrome extension directory."""
-    # Inside installed package: src/pywebflx/extension/
     pkg_ext = Path(__file__).resolve().parent / "extension"
     if pkg_ext.exists() and (pkg_ext / "manifest.json").exists():
         return pkg_ext
-    # Development: repo root extension/
     dev_ext = Path(__file__).resolve().parent.parent.parent / "extension"
     if dev_ext.exists() and (dev_ext / "manifest.json").exists():
         return dev_ext
     return pkg_ext
-
 
 
 @click.group()
@@ -45,7 +45,7 @@ def main():
 
 @main.command("install-extension")
 def install_extension():
-    """Install the PyWebFlx Chrome extension in Chrome."""
+    """Show steps to install the Chrome extension."""
     ext_dir = _get_extension_dir()
 
     click.echo()
@@ -58,31 +58,28 @@ def install_extension():
         click.echo("  Reinstale com: pip install pywebflx")
         return
 
-    ext_path = str(ext_dir)
-
     click.echo("  [1/3] Abra o Chrome e acesse: chrome://extensions")
     click.echo("        Ative o 'Modo do desenvolvedor' (canto superior direito)")
     click.echo()
     click.echo("  [2/3] Clique em 'Carregar sem compactacao' e cole este caminho:")
     click.echo()
-    click.echo(f"        {ext_path}")
+    click.echo(f"        {ext_dir}")
     click.echo()
     click.echo("  [3/3] Apos instalar, verifique com: pywebflx check")
-
+    click.echo()
+    click.echo(f"  Documentacao: {DOCS_URL}")
     click.echo()
 
 
 @main.command("uninstall-extension")
 def uninstall_extension():
-    """Remove the PyWebFlx Chrome extension."""
+    """Show steps to remove the Chrome extension."""
     click.echo()
     click.echo("  Para remover a extensao:")
     click.echo("  1. Abra chrome://extensions")
     click.echo("  2. Encontre 'PyWebFlx Bridge'")
     click.echo("  3. Clique em 'Remover'")
     click.echo()
-
-    _open_chrome_extensions()
 
 
 @main.command("check")
@@ -120,13 +117,31 @@ def check():
         sys.exit(1)
 
 
+@main.command("docs")
+def docs():
+    """Show documentation and repository links."""
+    click.echo()
+    click.echo("  PyWebFlx — Documentacao")
+    click.echo("  " + "-" * 45)
+    click.echo()
+    click.echo(f"  Site:       {DOCS_URL}")
+    click.echo(f"  GitHub:     {REPO_URL}")
+    click.echo(f"  Versao:     {__version__}")
+    click.echo()
+    click.echo("  Comandos disponiveis:")
+    click.echo("    pywebflx install-extension   Instalar extensao do Chrome")
+    click.echo("    pywebflx check               Verificar conexao")
+    click.echo("    pywebflx docs                Este menu")
+    click.echo("    pywebflx --version           Versao instalada")
+    click.echo()
+
+
 @main.command("extension-path")
 def extension_path():
     """Print the extension directory path (useful for scripts)."""
     ext_dir = _get_extension_dir()
     if ext_dir.exists():
         click.echo(str(ext_dir))
-        _copy_to_clipboard(str(ext_dir))
     else:
         click.echo("Extension not found", err=True)
         sys.exit(1)
