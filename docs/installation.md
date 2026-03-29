@@ -20,14 +20,12 @@ pip install -e ".[dev]"
 pywebflx install-extension
 ```
 
-This command will:
+The command will show the **extension path**. Then:
 
-1. **Copy** the extension path to your clipboard automatically
-2. **Open** Chrome at `chrome://extensions`
-3. You just need to:
-    - Enable **Developer mode** (toggle in the top-right corner)
-    - Click **Load unpacked**
-    - Paste the path (**Ctrl+V**) in the address bar and confirm
+1. Open Chrome and go to `chrome://extensions`
+2. Enable **Developer mode** (toggle in the top-right corner)
+3. Click **Load unpacked**
+4. Paste the path shown by the command and confirm
 
 !!! tip "Enterprise setup (multiple machines)"
     The same steps apply for each machine. After `pip install pywebflx`, the extension is bundled inside the package — no additional downloads needed.
@@ -40,11 +38,11 @@ pywebflx check
 
 If you see "Extension is CONNECTED!", everything is ready.
 
-## Other CLI commands
+## CLI commands
 
 | Command | Description |
 |---------|-------------|
-| `pywebflx install-extension` | Install Chrome extension (copies path + opens Chrome) |
+| `pywebflx install-extension` | Shows the extension path for installation |
 | `pywebflx check` | Verify extension connection |
 | `pywebflx uninstall-extension` | Instructions to remove the extension |
 | `pywebflx extension-path` | Print extension path (useful for scripts) |
